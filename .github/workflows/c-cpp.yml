@@ -2,9 +2,9 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -13,11 +13,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: dependencies
+      run:
+        sudo apt-get install -y valgrind cppcheck g++-9 cmake
     - name: configure
-      run: ./configure
+      run:
+        cmake .
     - name: make
       run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: cppcheck
+      run:
+        cppcheck --enable=all -i cmake-build-debug/ .
+    - name: valgrind
+      run:
+        valgrind -v --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(grep "add_executable" CMakeLists.txt | awk '{print $1}' | sed s/.*\(//)
