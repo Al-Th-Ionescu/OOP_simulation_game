@@ -5,18 +5,18 @@
 class Player{
 
     std::string name;
-    int luck;
+    int luck{};
     unsigned int age=0;
     bool dead=false;
 public:
-    Player(std::string name);
+    explicit Player(std::string name);
     ~Player();
 
     void showPlayer();
     int Difficulty() const;
     unsigned int showAge();
     void Death();
-    int Luck();
+    int Luck() const;
 };
 
 Player::Player(std::string name)
@@ -44,7 +44,7 @@ int Player::Difficulty() const {
     return age;
 }
 
-int Player::Luck() {
+int Player::Luck() const {
     return luck;
 }
 void Player::Death() {
@@ -67,7 +67,7 @@ void Player::showPlayer() {
 }
 
 class Status {
-    int health;
+    int health{};
     int hygiene=100;
     int fun=100;
     int wealth=100;
@@ -84,12 +84,12 @@ public:
         return wealth;
     }
     void showStats(Player);
-    bool Died(Player);
-    void HealthLuck(Player);
+    void Died(Player) const;
+    void HealthLuck(const Player&);
 };
 
 
-void Status::HealthLuck(Player x) {
+void Status::HealthLuck(const Player& x) {
     if (x.Luck() % 7 < 3 ) {
         std::cout
                 << '\n' << " You were born with a bad malformation. There will be surgeries needed in order to fix your health." << '\n' ;
@@ -119,7 +119,7 @@ void Status::showStats(Player x) {
     }
 }
 
-bool Status::Died(Player x) {
+void Status::Died(Player x) const {
     if (health <= 0 || hygiene <= 0 || fun <= 0)
         x.Death();
 }
