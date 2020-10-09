@@ -63,10 +63,10 @@ RM = "E:\CLion 2020.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\OOP
+CMAKE_SOURCE_DIR = E:\OOP_choice_game
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\OOP\cmake-build-debug
+CMAKE_BINARY_DIR = E:\OOP_choice_game\cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -93,14 +93,14 @@ clean: CMakeFiles/OOP.dir/clean
 CMakeFiles/OOP.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OOP.dir\build.make CMakeFiles/OOP.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OOP.dir\build.make CMakeFiles/OOP.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\OOP\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target OOP"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\OOP_choice_game\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target OOP"
 .PHONY : CMakeFiles/OOP.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/OOP.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\OOP\cmake-build-debug\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\OOP_choice_game\cmake-build-debug\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/OOP.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\OOP\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\OOP_choice_game\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/OOP.dir/rule
 
 # Convenience name for target.

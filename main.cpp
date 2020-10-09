@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
 #include <time.h>
+
 class Player{
 
     std::string name;
     int luck;
     unsigned int age=0;
+    bool dead=false;
 public:
     Player(std::string name);
     ~Player();
@@ -13,6 +15,7 @@ public:
     void showPlayer();
     int Difficulty() const;
     unsigned int showAge();
+    void Death();
 };
 
 Player::Player(std::string name)
@@ -23,8 +26,9 @@ Player::Player(std::string name)
 }
 
 Player::~Player() {
-    std::cout << '\n' << name <<" has died.";
-}
+    if (dead)
+    std::cout << '\n' << name << " has died.";
+    }
 
 int Player::Difficulty() const {
     if (luck % 3 ==0 )
@@ -34,8 +38,13 @@ int Player::Difficulty() const {
     return 2;
 }
 
+
  unsigned int Player::showAge()  {
     return age;
+}
+
+void Player::Death() {
+    dead = true;
 }
 
 void Player::showPlayer() {
@@ -60,7 +69,7 @@ class Status {
     int wealth=100;
 public:
 
-    int ReturnWealth(Player x)
+    int ReturnWealth(Player &x)
     {
         if (x.Difficulty() == 0 )
             wealth = 3;
@@ -71,6 +80,7 @@ public:
         return wealth;
     }
     void showStats(Player);
+    bool Died(Player);
 };
 
 void Status::showStats(Player x) {
@@ -79,6 +89,12 @@ void Status::showStats(Player x) {
     else
         std::cout << '\n' << "Your stats are: "<< '\n' <<"Health: " << health << "\n" <<"Hygiene: "<< hygiene << '\n' << "Fun: " << fun << '\n' <<"Wealth: " << Status::ReturnWealth(x) << "$" <<'\n';
 }
+
+bool Status::Died(Player x) {
+    if (health <= 0 || hygiene <= 0 || fun <= 0)
+        x.Death();
+}
+
 int main() {
     std::string name;
     Player x(name);
