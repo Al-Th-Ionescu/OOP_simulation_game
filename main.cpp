@@ -16,6 +16,7 @@ public:
     int Difficulty() const;
     unsigned int showAge();
     void Death();
+    int Luck();
 };
 
 Player::Player(std::string name)
@@ -26,7 +27,7 @@ Player::Player(std::string name)
 }
 
 Player::~Player() {
-    if (dead)
+    if (dead == true )
     std::cout << '\n' << name << " has died.";
     }
 
@@ -43,6 +44,9 @@ int Player::Difficulty() const {
     return age;
 }
 
+int Player::Luck() {
+    return luck;
+}
 void Player::Death() {
     dead = true;
 }
@@ -63,7 +67,7 @@ void Player::showPlayer() {
 }
 
 class Status {
-    int health=100;
+    int health;
     int hygiene=100;
     int fun=100;
     int wealth=100;
@@ -81,13 +85,38 @@ public:
     }
     void showStats(Player);
     bool Died(Player);
+    void HealthLuck(Player);
 };
 
+
+void Status::HealthLuck(Player x) {
+    if (x.Luck() % 7 < 3 ) {
+        std::cout
+                << '\n' << " You were born with a bad malformation. There will be surgeries needed in order to fix your health." << '\n' ;
+        health = 40;
+    }
+    if (x.Luck() % 7 >= 3 && x.Luck() % 7 < 5)
+    {
+        std :: cout << '\n' << " You were born with small lung problems. Nothing to worry about but you'll need to pay for a treatment."<< '\n';
+        health = 75;
+    }
+    if (x.Luck() % 7 >= 5)
+    {
+        std::cout << '\n' << "You were born perfectly healthy."<< '\n' ;
+        health=100;
+    }
+    }
 void Status::showStats(Player x) {
+    Status::HealthLuck(x);
     if (x.showAge() == 0)
-        std::cout << '\n' << "Your initial stats are:" << '\n' <<"Health: " << health << "\n" <<"Hygiene: "<< hygiene << '\n' << "Fun: " << fun << '\n' <<"Wealth: " << Status::ReturnWealth(x) <<  "$" << '\n';
-    else
-        std::cout << '\n' << "Your stats are: "<< '\n' <<"Health: " << health << "\n" <<"Hygiene: "<< hygiene << '\n' << "Fun: " << fun << '\n' <<"Wealth: " << Status::ReturnWealth(x) << "$" <<'\n';
+    { std::cout << '\n' << "Your initial stats are:" << '\n' << "Health: " << health << "\n" << "Hygiene: " << hygiene
+                  << '\n' << "Fun: " << fun << '\n' << "Wealth: " << Status::ReturnWealth(x) << "$" << '\n';
+        Status::Died(x);}
+    else {
+        std::cout << '\n' << "Your stats are: " << '\n' << "Health: " << health << "\n" << "Hygiene: " << hygiene
+                  << '\n' << "Fun: " << fun << '\n' << "Wealth: " << Status::ReturnWealth(x) << "$" << '\n';
+        Status::Died(x);
+    }
 }
 
 bool Status::Died(Player x) {
