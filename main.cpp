@@ -144,7 +144,7 @@ void Status::PermanentBuffHygiene() {
 }
 
 void Status::PermanentNerfFun() {
-    fun=fun-10;
+    fun=fun-5;
 }
 
 int Status::ReturnHealth() const {
@@ -167,14 +167,185 @@ void Status::ChangeStats(int x, int y, int z, int t) {
     wealth = wealth + t;
 }
 
+class weapons{
+    std::string name;
+    unsigned int min_dmg;
+    unsigned int max_dmg;
+    unsigned int crit_chance;
+    unsigned int durability=100;
+public:
+
+    weapons(std::string name);
+    ~weapons();
+    void attack();
+};
+
+weapons::weapons(std::string name) {
+    if(rand() % 4 ==0 )
+    {
+        name="stick";
+        this->name = name;
+        std::cout<< '\n' << "You have found a "<<name<<". Use it wisely."<<'\n';
+        min_dmg = rand() % 10 + 1;
+        max_dmg = min_dmg + 15;
+        std::cout<<'Its dmg is: '<<min_dmg<<"-"<<max_dmg;
+    }
+    if (rand() % 4 ==1 )
+    {
+        name="sword";
+        this->name = name;
+        std::cout<< '\n'<<"You have found a "<<name<<". Careful not to cut yourself!"<<'\n';
+        min_dmg = rand() % 25 + 1;
+        max_dmg = min_dmg + 10;
+        std::cout<<"Sword's dmg is: "<< min_dmg << "-"<<max_dmg;
+    }
+    if (rand() %4 == 2)
+    {
+        name="bow";
+        this->name = name;
+        std::cout<<'\n'<<"You have found a "<<name<<". Make the arrows rain!"<<'\n';
+        min_dmg = rand() % 35 + 1;
+        max_dmg = min_dmg + 20;
+        std::cout<<"The bow's dmg is: "<<min_dmg<<"-"<<max_dmg;
+    }
+    if (rand() %4 == 3)
+    {
+        name ="dagger";
+        this->name = name;
+        std::cout<<'\n'<<"You have found a "<<name<<". Stab the enemies from behind!";
+        min_dmg = rand() % 15 +1;
+        max_dmg = min_dmg + 5;
+        std::cout<<"The dagger's dmg is: "<<min_dmg<<"-"<<max_dmg;
+    }
+}
+
+weapons::~weapons() {
+    if (durability <= 0)
+        std::cout<< '\n' << "Look like your weapon broke and vanished into the void." << '\n';
+}
+
+
+class fight{
+    std::string enemy;
+    unsigned int enemy_life;
+    unsigned int enemy_dmg;
+public:
+    fight(std::string);
+    ~fight();
+};
+
+fight::fight(std::string name)
+{
+    if (rand() % 10 == 0)
+    {
+        name="Tarantula";
+        this->enemy = name;
+        enemy_life= 30;
+        enemy_dmg=5;
+        std::cout<<'\n'<< "A " << name <<" has appeared. The enemy has: "<<enemy_life<<" health points.";
+    }
+
+    if (rand() % 10 == 1)
+    {
+        name="Wolf";
+        this->enemy = name;
+        enemy_life = 45;
+        enemy_dmg = 10;
+        std::cout << '\n' << "A " << name<<" has appeared. The enemy has: "<<enemy_life<<" health points.";
+    }
+
+    if (rand() % 10 == 2)
+    {
+        name="Bear";
+        this->enemy = name;
+        enemy_life = 75;
+        enemy_dmg = 25;
+        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+    }
+    if (rand() % 10 ==3)
+    {
+        name= "Boar";
+        this->enemy = name;
+        enemy_life = 35;
+        enemy_dmg = 7;
+        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+    }
+    if (rand() % 10 == 4)
+    {
+        name= "Thief";
+        this->enemy = name;
+        enemy_life= 60;
+        enemy_dmg = 12;
+        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+    }
+    if (rand() % 10 == 5)
+    {
+        name = "Witch";
+        this->enemy = name;
+        enemy_life = 25;
+        enemy_dmg = 45;
+        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+    }
+    if (rand() % 10 == 6)
+    {
+        name = "Bat";
+        this->enemy = name;
+        enemy_life = 10;
+        enemy_dmg = 5;
+        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+    }
+    if (rand() % 10 == 7)
+    {
+        name = "Snake";
+        this->enemy = name;
+        enemy_life = 34;
+        enemy_dmg = 15;
+        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+    }
+    if (rand() % 10 == 8)
+    {
+        name = "Demon";
+        this->enemy = name;
+        enemy_life = 105;
+        enemy_dmg = 2;
+        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+    }
+    if (rand() % 10 == 9)
+    {
+        name = "Crocodile";
+        this->enemy = name;
+        enemy_life = 60;
+        enemy_dmg = 20;
+        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+    }
+}
+
+
+fight::~fight()
+{
+    if (enemy_life ==0 )
+        std::cout<<'\n'<<enemy<<"has died.";
+}
 class choice{
     int randomize;
     char option{};
+    bool buff_hygiene = false;
+    bool nerf_fun = false;
 
 public:
     choice(Player,Status);
     ~choice() = default;
+    bool ReturnBuffHygiene();
+    bool ReturnNerfFun();
 };
+
+bool choice::ReturnBuffHygiene(){
+    return buff_hygiene;
+}
+
+bool choice::ReturnNerfFun() {
+    return nerf_fun;
+}
 
 choice::choice(Player x,Status y) {
     if (x.Luck() % 7 < 5) {
@@ -212,20 +383,36 @@ choice::choice(Player x,Status y) {
                     std::cout << '\n'
                               << " You got an allergic reaction and vomited all night long. Health - 10, Hygiene - 25, Fun - 15.";
                     y.ChangeStats(-10, -25, -15, 0);
+                    if (buff_hygiene)
+                        y.PermanentBuffHygiene();
+                    if (nerf_fun)
+                        y.PermanentNerfFun();
                     y.showStats(x);
                 } else {
                     std::cout << '\n' << " You don't have enough money for the formula. Health -5, Fun -20.";
                     y.ChangeStats(-5, 0, -20, 0);
+                    if (buff_hygiene)
+                        y.PermanentBuffHygiene();
+                    if (nerf_fun)
+                        y.PermanentNerfFun();
                     y.showStats(x);
                 }
             }
             if (option == 'n') {
                 if (x.Difficulty() != 0) {
                     std::cout << '\n' << " Cow milk was a good substituent for human milk.";
+                    if (buff_hygiene)
+                        y.PermanentBuffHygiene();
+                    if (nerf_fun)
+                        y.PermanentNerfFun();
                     y.showStats(x);
                 } else {
                     std::cout << '\n' << "Too bad you don't have enough money to buy cow milk. Health -5, Fun -20.";
                     y.ChangeStats(-5, 0, -20, 0);
+                    if (buff_hygiene)
+                        y.PermanentBuffHygiene();
+                    if (nerf_fun)
+                        y.PermanentNerfFun();
                     y.showStats(x);
                 }
             }
@@ -245,6 +432,8 @@ choice::choice(Player x,Status y) {
                 y.ChangeStats(0, -5, 10, 0);
             else
                 y.ChangeStats(0, -5, 100 - y.ReturnFun(), 0);
+            if (nerf_fun)
+                y.PermanentNerfFun();
             y.showStats(x);
         }
         if (option == '2') {
@@ -252,7 +441,10 @@ choice::choice(Player x,Status y) {
                       << "Your mother kills the rat. What an unpleasant view! She teaches you to wash your hands."
                          "Your fun decreases by 5, but every year you'll gain +3 hygiene." << '\n';
             y.ChangeStats(0, 0, -5, 0);
+            buff_hygiene = true;
             y.PermanentBuffHygiene();
+            if (nerf_fun)
+                y.PermanentNerfFun();
             y.showStats(x);
         }
         x.Aging();
@@ -266,8 +458,11 @@ choice::choice(Player x,Status y) {
             if (option == 'y')
             {
                 std::cout<< '\n' << "She starts screaming at you. You start to cry. Trauma starts during childhood: every year "
-                                    "your fun will decrease by 10";
+                                    "your fun will decrease by 5";
+                nerf_fun = true;
                 y.PermanentNerfFun();
+                if (buff_hygiene)
+                    y.PermanentBuffHygiene();
                 y.showStats(x);
             }
             if (option =='n')
@@ -278,6 +473,8 @@ choice::choice(Player x,Status y) {
                     y.ChangeStats(-2,0,20,0);
                 else
                     y.ChangeStats(-2, 0 , 100-y.ReturnFun(),0);
+                if (buff_hygiene)
+                    y.PermanentBuffHygiene();
                 y.showStats(x);
             }
             x.Aging();
