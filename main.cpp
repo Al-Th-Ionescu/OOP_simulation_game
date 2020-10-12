@@ -28,8 +28,8 @@ Player::Player(std::string name)
 
 Player::~Player() {
     if (dead == true )
-    std::cout << '\n' << name << " has died.";
-    }
+        std::cout << '\n' << name << " has died.";
+}
 
 int Player::Difficulty() const {
     if (luck % 3 ==0 )
@@ -40,7 +40,7 @@ int Player::Difficulty() const {
 }
 
 
- unsigned int Player::showAge()  {
+unsigned int Player::showAge()  {
     return age;
 }
 
@@ -106,12 +106,12 @@ void Status::HealthLuck(const Player& x) {
         std::cout << '\n' << "You were born perfectly healthy."<< '\n' ;
         health=100;
     }
-    }
+}
 void Status::showStats(Player x) {
     Status::HealthLuck(x);
     if (x.showAge() == 0)
     { std::cout << '\n' << "Your initial stats are:" << '\n' << "Health: " << health << "\n" << "Hygiene: " << hygiene
-                  << '\n' << "Fun: " << fun << '\n' << "Wealth: " << Status::ReturnWealth(x) << "$" << '\n';
+                << '\n' << "Fun: " << fun << '\n' << "Wealth: " << Status::ReturnWealth(x) << "$" << '\n';
         Status::Died(x);}
     else {
         std::cout << '\n' << "Your stats are: " << '\n' << "Health: " << health << "\n" << "Hygiene: " << hygiene
@@ -178,6 +178,6 @@ int main() {
     Status y;
     x.showPlayer();
     y.showStats(x);
-    choice z(0,opt,x,y);
+    //choice z(0,opt,x,y);
     return 0;
 }
