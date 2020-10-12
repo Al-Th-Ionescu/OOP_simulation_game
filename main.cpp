@@ -28,7 +28,7 @@ Player::Player(std::string name){
 
 Player::~Player() {
     if (dead)
-        std::cout << '\n' << name << " has died.";
+        std::cout << '\n' << name << " has died at age of "<<showAge()<<".";
 }
 
 int Player::Difficulty() const {
@@ -72,9 +72,10 @@ void Player::Aging() {
 
 class Status {
     int health{};
-    int hygiene=100;
-    int fun=100;
-    int wealth=100;
+    int hygiene = 100;
+    int fun = 100;
+    int wealth = 100;
+
 public:
 
     void SetWealth(Player &x)
@@ -92,7 +93,9 @@ public:
     void ChangeStats(int, int, int, int);
     int ReturnHealth() const;
     int ReturnWealth() const;
-
+    int ReturnFun() const;
+    void PermanentBuffHygiene();
+    void PermanentNerfFun();
 };
 
 int Status::ReturnWealth() const
@@ -123,7 +126,7 @@ void Status::showStats(Player x) {
         Status::HealthLuck(x);
         Status::SetWealth(x);
         std::cout << '\n' << "Your initial stats are:" << '\n' << "Health: " << health << "\n" << "Hygiene: " << hygiene
-                << '\n' << "Fun: " << fun << '\n' << "Wealth: " << Status::ReturnWealth() << "$" << '\n';
+                  << '\n' << "Fun: " << fun << '\n' << "Wealth: " << Status::ReturnWealth() << "$" << '\n';
 
     }
     else {
@@ -133,8 +136,23 @@ void Status::showStats(Player x) {
     }
 }
 
+void Status::PermanentBuffHygiene() {
+    if (hygiene<=97)
+        hygiene=hygiene+3;
+    else
+        hygiene= 100;
+}
+
+void Status::PermanentNerfFun() {
+    fun=fun-10;
+}
+
 int Status::ReturnHealth() const {
     return health;
+}
+
+int Status::ReturnFun() const {
+    return fun;
 }
 
 void Status::Died(Player x) const {
@@ -150,7 +168,7 @@ void Status::ChangeStats(int x, int y, int z, int t) {
 }
 
 class choice{
-    int randomize=0;
+    int randomize;
     char option{};
 
 public:
@@ -182,8 +200,10 @@ choice::choice(Player x,Status y) {
     }
     x.Aging();
     std::cout<<'\n' << "~~~~~YEAR "<< x.showAge() <<"~~~~~";
-    if (x.showAge() <= 2) {
-        if (randomize % 10 == 0) {
+    randomize=rand();
+    while (x.showAge() <= 2) {
+        int aux= randomize % 3;
+        if (randomize % 3 == 0) {
             std::cout << '\n' << "Your mother cannot breastfeed you no more. Should you try the baby formula? [y/n]"
                       << '\n';
             std::cin >> option;
@@ -200,20 +220,79 @@ choice::choice(Player x,Status y) {
                 }
             }
             if (option == 'n') {
-                if (x.Difficulty() != 0){
+                if (x.Difficulty() != 0) {
                     std::cout << '\n' << " Cow milk was a good substituent for human milk.";
                     y.showStats(x);
-                }
-                else {
+                } else {
                     std::cout << '\n' << "Too bad you don't have enough money to buy cow milk. Health -5, Fun -20.";
                     y.ChangeStats(-5, 0, -20, 0);
                     y.showStats(x);
                 }
             }
+            x.Aging();
+            std::cout<<'\n' << "~~~~~YEAR "<< x.showAge() <<"~~~~~";
+
         }
-        if (randomize % 10 == 1)
-            std::cout << '\n' << " d";
+        if (randomize % 3 == 1){
+            std::cout << '\n' << "From a hole a rat emerged. What will you do? " << '\n' << "1) Pet the rat."
+                      << '\n' << "2)Cry for help" << '\n';
+        std::cin >> option;
+        if (option == '1') {
+            std::cout << '\n'
+                      << "It turns out the rat is friendly and did not bite you. Too bad you got fleas infested. Hygiene -5 , Fun +10"
+                      << '\n';
+            if (y.ReturnFun() <= 90)
+                y.ChangeStats(0, -5, 10, 0);
+            else
+                y.ChangeStats(0, -5, 100 - y.ReturnFun(), 0);
+            y.showStats(x);
+        }
+        if (option == '2') {
+            std::cout << '\n'
+                      << "Your mother kills the rat. What an unpleasant view! She teaches you to wash your hands."
+                         "Your fun decreases by 5, but every year you'll gain +3 hygiene." << '\n';
+            y.ChangeStats(0, 0, -5, 0);
+            y.PermanentBuffHygiene();
+            y.showStats(x);
+        }
+        x.Aging();
+        std::cout<<'\n' << "~~~~~YEAR "<< x.showAge() <<"~~~~~";
+
     }
+        if (randomize %3 == 2){
+            std::cout<< '\n' <<"Your mother is trying to teach you how to speak! Frustrated because you can't repeat after her, "
+                               "she says a swear world. Would you repeat the bad word? [y/n]" << '\n';
+            std::cin>>option;
+            if (option == 'y')
+            {
+                std::cout<< '\n' << "She starts screaming at you. You start to cry. Trauma starts during childhood: every year "
+                                    "your fun will decrease by 10";
+                y.PermanentNerfFun();
+                y.showStats(x);
+            }
+            if (option =='n')
+            {
+                std::cout<< '\n' <<"Seeing her sad makes you feel bad so you try harder to say a world. You succeed and she "
+                                   "gives you a candy. Health -2, Fun +20 ";
+                if (y.ReturnFun()<=20)
+                    y.ChangeStats(-2,0,20,0);
+                else
+                    y.ChangeStats(-2, 0 , 100-y.ReturnFun(),0);
+                y.showStats(x);
+            }
+            x.Aging();
+            std::cout<<'\n' << "~~~~~YEAR "<< x.showAge() <<"~~~~~";
+        }
+        while (aux == randomize %3 )
+            randomize=rand();
+    }
+
+   /* while (x.showAge() <= 10 && x.showAge() >2 ){
+        if (randomize % 10 ==0)
+        {
+            std::cout<< '\n' << " ";
+        }
+    }*/
 }
 
 
