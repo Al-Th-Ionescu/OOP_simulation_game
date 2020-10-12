@@ -86,6 +86,7 @@ public:
     void showStats(Player);
     void Died(Player) const;
     void HealthLuck(const Player&);
+    void ChangeStats(int, int, int, int);
 };
 
 
@@ -97,7 +98,7 @@ void Status::HealthLuck(const Player& x) {
     }
     if (x.Luck() % 7 >= 3 && x.Luck() % 7 < 5)
     {
-        std :: cout << '\n' << " You were born with small lung problems. Nothing to worry about but you'll need to pay for a treatment."<< '\n';
+        std :: cout << '\n' << " You were born with some lung problems. Nothing to worry about but you'll need to pay for a treatment."<< '\n';
         health = 75;
     }
     if (x.Luck() % 7 >= 5)
@@ -124,11 +125,59 @@ void Status::Died(Player x) const {
         x.Death();
 }
 
+void Status::ChangeStats(int x, int y, int z, int t) {
+    health= health + x;
+    hygiene= hygiene + y;
+    fun = fun + z;
+    wealth = wealth + t;
+}
+
+class choice{
+    int randomize;
+    char option;
+
+public:
+    choice(int,char,Player,Status);
+    ~choice();
+};
+
+choice::choice(int randomize,char option,Player x,Status y)
+{
+
+    if(x.showAge()<=2) {
+        if (randomize % 10 == 0) {
+            std::cout << '\n' << "Your mother cannot breastfeed you no more. Should you try the baby formula? y/n";
+            std::cin>> option;
+            if (option =='y')
+            {
+                std::cout<< '\n'<<" You got an allergic reaction and vomited all night long. Health - 10, Hygiene - 25, Fun - 15.";
+                y.ChangeStats(-10,-25,-15,0);
+                if (x.Luck() ==0 )
+                {
+                    std::cout<< '\n' <<" You don't have enough money for the formula. Health -5, Fun -20.";
+                    y.ChangeStats(-5, 0 , -20 , 0);
+                }
+            }
+            if (option =='n') {
+                std::cout << '\n' << " Cow milk was a good substituent for human milk.";
+                if (x.Luck() == 0) {
+                    std::cout << '\n' << "Too bad you don't have enough money to buy cow milk. Health -5, Fun -20.";
+                    y.ChangeStats(-5,0,-20,0);
+                }
+            }
+        }
+        if (randomize % 10 ==1 )
+            std::cout<< '\n' << " d";
+    }
+}
+
 int main() {
     std::string name;
+    char opt;
     Player x(name);
     Status y;
     x.showPlayer();
     y.showStats(x);
+    choice z(0,opt,x,y);
     return 0;
 }
