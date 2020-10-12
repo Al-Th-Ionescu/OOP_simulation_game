@@ -1,3 +1,0 @@
-E:/OOP_choice_game/cmake-build-debug/CMakeFiles/OOP.dir
-E:/OOP_choice_game/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/OOP_choice_game/cmake-build-debug/CMakeFiles/rebuild_cache.dir
