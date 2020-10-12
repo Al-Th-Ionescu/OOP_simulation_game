@@ -14,7 +14,7 @@ public:
 
     void showPlayer();
     int Difficulty() const;
-    unsigned int showAge();
+    unsigned int showAge() const;
     void Death();
     int Luck() const;
     void Aging();
@@ -40,7 +40,7 @@ int Player::Difficulty() const {
 }
 
 
-unsigned int Player::showAge()  {
+unsigned int Player::showAge() const  {
     return age;
 }
 
@@ -90,12 +90,12 @@ public:
     void Died(Player) const;
     void HealthLuck(const Player&);
     void ChangeStats(int, int, int, int);
-    int ReturnHealth();
-    int ReturnWealth();
+    int ReturnHealth() const;
+    int ReturnWealth() const;
 
 };
 
-int Status::ReturnWealth()
+int Status::ReturnWealth() const
 {
     return wealth;
 }
@@ -133,7 +133,7 @@ void Status::showStats(Player x) {
     }
 }
 
-int Status::ReturnHealth() {
+int Status::ReturnHealth() const {
     return health;
 }
 
@@ -151,11 +151,11 @@ void Status::ChangeStats(int x, int y, int z, int t) {
 
 class choice{
     int randomize=0;
-    char option;
+    char option{};
 
 public:
     choice(Player,Status);
-    ~choice();
+    ~choice() = default;
 };
 
 choice::choice(Player x,Status y) {
@@ -215,15 +215,14 @@ choice::choice(Player x,Status y) {
             std::cout << '\n' << " d";
     }
 }
-choice::~choice() {}
+
 
 int main() {
     std::string name;
-    char opt;
     Player x(name);
     Status y;
     x.showPlayer();
     y.showStats(x);
-    choice z(x,y);
+    choice(x,y);
     return 0;
 }
