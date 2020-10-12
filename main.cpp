@@ -27,7 +27,7 @@ Player::Player(std::string name){
 }
 
 Player::~Player() {
-    if (dead == true )
+    if (dead)
         std::cout << '\n' << name << " has died.";
 }
 
@@ -150,15 +150,15 @@ void Status::ChangeStats(int x, int y, int z, int t) {
 }
 
 class choice{
-    int randomize;
+    int randomize=0;
     char option;
 
 public:
-    choice(int,char,Player,Status);
+    choice(Player,Status);
     ~choice();
 };
 
-choice::choice(int randomize,char option,Player x,Status y) {
+choice::choice(Player x,Status y) {
     if (x.Luck() % 7 < 5) {
         std::cout << '\n' << " Do you want to fix your health issues? [y/n]" << '\n';
         if (y.ReturnHealth() == 40)
@@ -224,6 +224,6 @@ int main() {
     Status y;
     x.showPlayer();
     y.showStats(x);
-    choice z(0,opt,x,y);
+    choice z(x,y);
     return 0;
 }
