@@ -174,17 +174,17 @@ void Status::GetAttacked(int x) {
 
 class weapons{
     std::string name;
-    unsigned int min_dmg;
-    unsigned int max_dmg;
-    unsigned int crit_chance;
-    unsigned int durability=100;
+    int min_dmg;
+    int max_dmg;
+    int crit_chance;
+    int durability=100;
 public:
 
     weapons();
     ~weapons();
-    int ReturnDmg();
+    int ReturnDmg() const;
     void Use();
-    int ReturnDur();
+    int ReturnDur() const;
     std::string ReturnWeap();
 };
 
@@ -229,7 +229,7 @@ weapons::~weapons() {
         std::cout<< '\n' << "Look like your weapon broke and vanished into the void." << '\n';
 }
 
-int weapons::ReturnDmg() {
+int weapons::ReturnDmg() const {
     return (min_dmg + rand() % (max_dmg -min_dmg) + 1 );
 }
 
@@ -238,7 +238,7 @@ void weapons::Use()
     durability=durability - (rand() % 9) ;
 }
 
-int weapons::ReturnDur() {
+int weapons::ReturnDur() const {
     return durability;
 }
 
@@ -249,14 +249,14 @@ std::string weapons::ReturnWeap() {
 class opponent{
     std::string enemy;
     int enemy_life;
-    unsigned int enemy_dmg;
+    int enemy_dmg;
 public:
     opponent();
     ~opponent();
     std::string ReturnName();
     void TakeDmg(int);
-    int ReturnEnemyHealth();
-    unsigned int ReturnEnemyDmg();
+    int ReturnEnemyHealth() const;
+    int ReturnEnemyDmg() const;
 };
 
 opponent::opponent(){
@@ -348,43 +348,45 @@ void opponent::TakeDmg(int x) {
     enemy_life = enemy_life - x ;
 }
 
-int opponent::ReturnEnemyHealth() {
+int opponent::ReturnEnemyHealth() const {
     return enemy_life;
 }
-unsigned int opponent::ReturnEnemyDmg() {
+int opponent::ReturnEnemyDmg() const {
     return enemy_dmg;
 }
 
 class fight{
     unsigned int round=1;
 public:
-    fight(opponent x, weapons t, Status z,Player y) {
-
-        while (x.ReturnEnemyHealth() > 0 && z.ReturnHealth() > 0) {
-            std::cout << "\n" << "Round " << round << '\n';
-            if (round % 2 == 1) {
-                int dmg = t.ReturnDmg();
-                std::cout << '\n' << "You have attacked the " << x.ReturnName() << " and dealt " << dmg << " dmg"
-                          << '\n';
-                t.Use();
-                std::cout << "Your " << t.ReturnWeap() << " has " << t.ReturnDur() << " durability left." << '\n';
-                x.TakeDmg(dmg);
-                std::cout << "The " << x.ReturnName() << " has " << x.ReturnEnemyHealth() << " life left." << '\n';
-            }
-            if (round % 2 == 0) {
-                std::cout << '\n' << x.ReturnName() << " has attacked you and dealt " << x.ReturnEnemyDmg() << " dmg."
-                          << '\n';
-                z.GetAttacked(x.ReturnEnemyDmg());
-                std::cout << "Your life is " << z.ReturnHealth() << "." << '\n';
-            }
-            round++;
-        }
-        std::cout<<"The fight is over!"<<'\n';
-        if (z.ReturnHealth()<=0)
-            z.Died(y);
-    }
+    fight(opponent x, weapons t, Status z,const Player& y);
     ~fight() = default;
 };
+
+fight::fight(opponent x, weapons t, Status z, const Player& y) {
+
+    while (x.ReturnEnemyHealth() > 0 && z.ReturnHealth() > 0) {
+        std::cout << "\n" << "Round " << round << '\n';
+        if (round % 2 == 1) {
+            int dmg = t.ReturnDmg();
+            std::cout << '\n' << "You have attacked the " << x.ReturnName() << " and dealt " << dmg << " dmg"
+                      << '\n';
+            t.Use();
+            std::cout << "Your " << t.ReturnWeap() << " has " << t.ReturnDur() << " durability left." << '\n';
+            x.TakeDmg(dmg);
+            std::cout << "The " << x.ReturnName() << " has " << x.ReturnEnemyHealth() << " life left." << '\n';
+        }
+        if (round % 2 == 0) {
+            std::cout << '\n' << x.ReturnName() << " has attacked you and dealt " << x.ReturnEnemyDmg() << " dmg."
+                      << '\n';
+            z.GetAttacked(x.ReturnEnemyDmg());
+            std::cout << "Your life is " << z.ReturnHealth() << "." << '\n';
+        }
+        round++;
+    }
+    std::cout<<"The fight is over!"<<'\n';
+    if (z.ReturnHealth()<=0)
+        z.Died(y);
+}
 
 class choice{
     int randomize;
