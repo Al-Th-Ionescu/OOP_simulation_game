@@ -358,7 +358,7 @@ unsigned int opponent::ReturnEnemyDmg() {
 class fight{
     unsigned int round=1;
 public:
-    fight(opponent x, weapons t, Status z) {
+    fight(opponent x, weapons t, Status z,Player y) {
 
         while (x.ReturnEnemyHealth() > 0 && z.ReturnHealth() > 0) {
             std::cout << "\n" << "Round " << round << '\n';
@@ -379,11 +379,11 @@ public:
             }
             round++;
         }
+        std::cout<<"The fight is over!"<<'\n';
+        if (z.ReturnHealth()<=0)
+            z.Died(y);
     }
-    ~fight() {
-        std::cout<<'\n'<<"The fight is over"<<'\n';
-    }
-
+    ~fight() = default;
 };
 
 class choice{
@@ -561,7 +561,7 @@ int main() {
     y.showStats(x);
     weapons t;
     opponent q;
-    fight(q,t ,y);
+    fight(q,t ,y,x);
    // choice(x,y);
     return 0;
 }
