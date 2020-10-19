@@ -96,6 +96,7 @@ public:
     int ReturnFun() const;
     void PermanentBuffHygiene();
     void PermanentNerfFun();
+    void GetAttacked(int);
 };
 
 int Status::ReturnWealth() const
@@ -167,6 +168,10 @@ void Status::ChangeStats(int x, int y, int z, int t) {
     wealth = wealth + t;
 }
 
+void Status::GetAttacked(int x) {
+    health = health - x;
+}
+
 class weapons{
     std::string name;
     unsigned int min_dmg;
@@ -175,47 +180,47 @@ class weapons{
     unsigned int durability=100;
 public:
 
-    weapons(std::string name);
+    weapons();
     ~weapons();
-    void attack();
+    int ReturnDmg();
+    void Use();
+    int ReturnDur();
+    std::string ReturnWeap();
 };
 
-weapons::weapons(std::string name) {
-    if(rand() % 4 ==0 )
+weapons::weapons() {
+    int random= rand();
+    if(random % 4 ==0 )
     {
-        name="stick";
-        this->name = name;
-        std::cout<< '\n' << "You have found a "<<name<<". Use it wisely."<<'\n';
-        min_dmg = rand() % 10 + 1;
-        max_dmg = min_dmg + 15;
-        std::cout<<'Its dmg is: '<<min_dmg<<"-"<<max_dmg;
+        this->name = "stick";
+        std::cout<< '\n' << "You have found a "<<this->name<<". Use it wisely."<<'\n';
+        this->min_dmg = rand() % 10 + 1;
+        this->max_dmg = min_dmg + 15;
+        std::cout<<"Stick's dmg is:"<<this->min_dmg<<"-"<<this->max_dmg<<'\n';
     }
-    if (rand() % 4 ==1 )
+    if (random % 4 ==1 )
     {
-        name="sword";
-        this->name = name;
-        std::cout<< '\n'<<"You have found a "<<name<<". Careful not to cut yourself!"<<'\n';
-        min_dmg = rand() % 25 + 1;
-        max_dmg = min_dmg + 10;
-        std::cout<<"Sword's dmg is: "<< min_dmg << "-"<<max_dmg;
+        this->name = "sword";
+        std::cout<< '\n'<<"You have found a "<< this->name <<". Careful not to cut yourself!"<<'\n';
+        this->min_dmg = rand() % 25 + 1;
+        this->max_dmg = min_dmg + 10;
+        std::cout<<"Sword's dmg is: "<< this->min_dmg << "-"<<this->max_dmg<<'\n';
     }
-    if (rand() %4 == 2)
+    if (random %4 == 2)
     {
-        name="bow";
-        this->name = name;
-        std::cout<<'\n'<<"You have found a "<<name<<". Make the arrows rain!"<<'\n';
-        min_dmg = rand() % 35 + 1;
-        max_dmg = min_dmg + 20;
-        std::cout<<"The bow's dmg is: "<<min_dmg<<"-"<<max_dmg;
+        this->name = "bow";
+        std::cout<<'\n'<<"You have found a "<<this->name<<". Make the arrows rain!"<<'\n';
+        this->min_dmg = rand() % 35 + 1;
+        this->max_dmg = min_dmg + 20;
+        std::cout<<"The bow's dmg is: "<<this->min_dmg<<"-"<<this->max_dmg<<'\n';
     }
-    if (rand() %4 == 3)
+    if (random %4 == 3)
     {
-        name ="dagger";
-        this->name = name;
-        std::cout<<'\n'<<"You have found a "<<name<<". Stab the enemies from behind!";
-        min_dmg = rand() % 15 +1;
-        max_dmg = min_dmg + 5;
-        std::cout<<"The dagger's dmg is: "<<min_dmg<<"-"<<max_dmg;
+        this->name ="dagger";
+        std::cout<<'\n'<<"You have found a "<< this-> name<<". Stab the enemies from behind!"<<'\n';
+        this->min_dmg = rand() % 15 +1;
+        this->max_dmg =min_dmg + 5;
+        std::cout<<"The dagger's dmg is: "<<this->min_dmg<<"-"<<this->max_dmg<<'\n';
     }
 }
 
@@ -224,108 +229,163 @@ weapons::~weapons() {
         std::cout<< '\n' << "Look like your weapon broke and vanished into the void." << '\n';
 }
 
+int weapons::ReturnDmg() {
+    return (min_dmg + rand() % (max_dmg -min_dmg) + 1 );
+}
 
-class fight{
+void weapons::Use()
+{
+    durability=durability - (rand() % 9) ;
+}
+
+int weapons::ReturnDur() {
+    return durability;
+}
+
+std::string weapons::ReturnWeap() {
+    return name;
+}
+
+class opponent{
     std::string enemy;
-    unsigned int enemy_life;
+    int enemy_life;
     unsigned int enemy_dmg;
 public:
-    fight(std::string);
-    ~fight();
+    opponent();
+    ~opponent();
+    std::string ReturnName();
+    void TakeDmg(int);
+    int ReturnEnemyHealth();
+    unsigned int ReturnEnemyDmg();
 };
 
-fight::fight(std::string name)
-{
-    if (rand() % 10 == 0)
+opponent::opponent(){
+    int random=rand();
+    if (random % 10 == 0)
     {
-        name="Tarantula";
-        this->enemy = name;
-        enemy_life= 30;
-        enemy_dmg=5;
-        std::cout<<'\n'<< "A " << name <<" has appeared. The enemy has: "<<enemy_life<<" health points.";
+        this->enemy="Tarantula";
+        this->enemy_life= 30;
+        this->enemy_dmg=5;
+        std::cout<<'\n'<< "A " << this->enemy <<" has appeared. The enemy has: "<<this->enemy_life<<" health points."<<'\n';
     }
 
-    if (rand() % 10 == 1)
+    if (random % 10 == 1)
     {
-        name="Wolf";
-        this->enemy = name;
-        enemy_life = 45;
-        enemy_dmg = 10;
-        std::cout << '\n' << "A " << name<<" has appeared. The enemy has: "<<enemy_life<<" health points.";
+        this->enemy="Wolf";
+        this->enemy_life = 45;
+        this->enemy_dmg = 10;
+        std::cout << '\n' << "A " << this->enemy <<" has appeared. The enemy has: "<<this->enemy_life<<" health points."<<'\n';
     }
 
-    if (rand() % 10 == 2)
+    if (random % 10 == 2)
     {
-        name="Bear";
-        this->enemy = name;
-        enemy_life = 75;
-        enemy_dmg = 25;
-        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+        this->enemy="Bear";
+        this->enemy_life = 75;
+        this->enemy_dmg = 25;
+        std::cout<< '\n'<< "A "<< this->enemy <<" has appeared. The enemy has: "<< this->enemy_life<<" health points"<<'\n';
     }
-    if (rand() % 10 ==3)
+    if (random % 10 ==3)
     {
-        name= "Boar";
-        this->enemy = name;
-        enemy_life = 35;
-        enemy_dmg = 7;
-        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+        this->enemy = "Boar";
+        this->enemy_life = 35;
+        this->enemy_dmg = 7;
+        std::cout<< '\n'<< "A "<< this->enemy <<" has appeared. The enemy has: "<< this->enemy_life<<" health points"<<'\n';
     }
-    if (rand() % 10 == 4)
+    if (random % 10 == 4)
     {
-        name= "Thief";
-        this->enemy = name;
-        enemy_life= 60;
-        enemy_dmg = 12;
-        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+        this->enemy= "Thief";
+        this->enemy_life= 60;
+        this->enemy_dmg = 12;
+        std::cout<< '\n'<< "A "<< this->enemy <<" has appeared. The enemy has: "<< this->enemy_life<<" health points"<<'\n';
     }
-    if (rand() % 10 == 5)
+    if (random % 10 == 5)
     {
-        name = "Witch";
-        this->enemy = name;
-        enemy_life = 25;
-        enemy_dmg = 45;
-        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+        this->enemy = "Witch";
+        this->enemy_life = 25;
+        this->enemy_dmg = 45;
+        std::cout<< '\n'<< "A "<< this->enemy <<" has appeared. The enemy has: "<< this->enemy_life<<" health points"<<'\n';
     }
-    if (rand() % 10 == 6)
+    if (random % 10 == 6)
     {
-        name = "Bat";
-        this->enemy = name;
-        enemy_life = 10;
-        enemy_dmg = 5;
-        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+        this->enemy = "Bat";
+        this->enemy_life = 10;
+        this->enemy_dmg = 5;
+        std::cout<< '\n'<< "A "<< this->enemy <<" has appeared. The enemy has: "<< this->enemy_life<<" health points"<<'\n';
     }
-    if (rand() % 10 == 7)
+    if (random % 10 == 7)
     {
-        name = "Snake";
-        this->enemy = name;
-        enemy_life = 34;
-        enemy_dmg = 15;
-        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+        this->enemy = "Snake";
+        this->enemy_life = 34;
+        this->enemy_dmg = 15;
+        std::cout<< '\n'<< "A "<< this->enemy <<" has appeared. The enemy has: "<< this->enemy_life<<" health points"<<'\n';
     }
-    if (rand() % 10 == 8)
+    if (random % 10 == 8)
     {
-        name = "Demon";
-        this->enemy = name;
-        enemy_life = 105;
-        enemy_dmg = 2;
-        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+        this->enemy = "Demon";
+        this->enemy_life = 105;
+        this->enemy_dmg = 2;
+        std::cout<< '\n'<< "A "<< this->enemy <<" has appeared. The enemy has: "<< this->enemy_life<<" health points"<<'\n';
     }
-    if (rand() % 10 == 9)
+    if (random % 10 == 9)
     {
-        name = "Crocodile";
-        this->enemy = name;
-        enemy_life = 60;
-        enemy_dmg = 20;
-        std::cout<< '\n'<< "A "<< name <<" has appeared. The emeny has: "<< enemy_life<<" health points";
+        this->enemy = "Crocodile";
+        this->enemy_life = 60;
+        this->enemy_dmg = 20;
+        std::cout<< '\n'<< "A "<< this->enemy <<" has appeared. The enemy has: "<< this->enemy_life<<" health points"<<'\n';
     }
 }
 
-
-fight::~fight()
-{
-    if (enemy_life ==0 )
-        std::cout<<'\n'<<enemy<<"has died.";
+opponent::~opponent(){
+    if (enemy_life <=0 )
+        std::cout<<'\n'<<enemy<<" has died."<<'\n';
 }
+
+std::string opponent::ReturnName() {
+    return enemy;
+}
+
+void opponent::TakeDmg(int x) {
+    enemy_life = enemy_life - x ;
+}
+
+int opponent::ReturnEnemyHealth() {
+    return enemy_life;
+}
+unsigned int opponent::ReturnEnemyDmg() {
+    return enemy_dmg;
+}
+
+class fight{
+    unsigned int round=1;
+public:
+    fight(opponent x, weapons t, Status z) {
+
+        while (x.ReturnEnemyHealth() > 0 && z.ReturnHealth() > 0) {
+            std::cout << "\n" << "Round " << round << '\n';
+            if (round % 2 == 1) {
+                int dmg = t.ReturnDmg();
+                std::cout << '\n' << "You have attacked the " << x.ReturnName() << " and dealt " << dmg << " dmg"
+                          << '\n';
+                t.Use();
+                std::cout << "Your " << t.ReturnWeap() << " has " << t.ReturnDur() << " durability left." << '\n';
+                x.TakeDmg(dmg);
+                std::cout << "The " << x.ReturnName() << " has " << x.ReturnEnemyHealth() << " life left." << '\n';
+            }
+            if (round % 2 == 0) {
+                std::cout << '\n' << x.ReturnName() << " has attacked you and dealt " << x.ReturnEnemyDmg() << " dmg."
+                          << '\n';
+                z.GetAttacked(x.ReturnEnemyDmg());
+                std::cout << "Your life is " << z.ReturnHealth() << "." << '\n';
+            }
+            round++;
+        }
+    }
+    ~fight() {
+        std::cout<<'\n'<<"The fight is over"<<'\n';
+    }
+
+};
+
 class choice{
     int randomize;
     char option{};
@@ -499,6 +559,9 @@ int main() {
     Status y;
     x.showPlayer();
     y.showStats(x);
-    choice(x,y);
+    weapons t;
+    opponent q;
+    fight(q,t ,y);
+   // choice(x,y);
     return 0;
 }
