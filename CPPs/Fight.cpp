@@ -9,7 +9,8 @@ fight::fight() {
 void fight::Attack(Status z) {
     std::cout << '\n' << "Would you like to fight this opponent? [y/n]" << '\n';
     char option;
-    std::cin >> option;
+    option='y';  ///DE COMENTAT
+   // std::cin >> option;  /// DE DECOMENTAT
     if (option == 'y') {
         while (y.ReturnEnemyHealth() > 0 && z.ReturnHealth() > 0) {
             std::cout <<'\n'<< "~~~~~Round " << round << "~~~~~~~" << '\n';
