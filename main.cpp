@@ -15,9 +15,9 @@ int main() {
     Status y;
     x.showPlayer();
     y.showStats(x);
-   fight a;
-   a.Attack(y);
+    fight a;
+    a.Attack(y);
 
-   // choice(x,y);
+    // choice(x,y);
     return 0;
 }

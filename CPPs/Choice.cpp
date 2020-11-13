@@ -2,7 +2,7 @@
 #include <string>
 #include "../Headers/Choice.h"
 
-bool choice::ReturnBuffHygiene(){
+bool choice::ReturnBuffHygiene() {
     return buff_hygiene;
 }
 
@@ -10,7 +10,7 @@ bool choice::ReturnNerfFun() {
     return nerf_fun;
 }
 
-choice::choice(Player x,Status y) {
+choice::choice(Player x, Status y) {
     if (x.Luck() % 7 < 5) {
         std::cout << '\n' << " Do you want to fix your health issues? [y/n]" << '\n';
         if (y.ReturnHealth() == 40)
@@ -33,23 +33,23 @@ choice::choice(Player x,Status y) {
 
     }
     x.Aging();
-    std::cout<<'\n' << "~~~~~YEAR "<< x.showAge() <<"~~~~~";
-    randomize=rand();
+    std::cout << '\n' << "~~~~~YEAR " << x.showAge() << "~~~~~";
+    randomize = rand();
     while (x.showAge() <= 2) {
-        int aux= randomize % 3;
+        int aux = randomize % 3;
         if (randomize % 3 == 0) {
             baby_story(x, y);
 
         }
-        if (randomize % 3 == 1){
+        if (randomize % 3 == 1) {
             rat_story(x, y);
 
         }
-        if (randomize %3 == 2){
+        if (randomize % 3 == 2) {
             learn_words(x, y);
         }
-        while (aux == randomize %3 )
-            randomize=rand();
+        while (aux == randomize % 3)
+            randomize = rand();
     }
 
     /* while (x.showAge() <= 10 && x.showAge() >2 ){
@@ -104,7 +104,7 @@ void choice::baby_story(Player &x, Status &y) const {
         }
     }
     x.Aging();
-    std::cout<<'\n' << "~~~~~YEAR "<< x.showAge() <<"~~~~~";
+    std::cout << '\n' << "~~~~~YEAR " << x.showAge() << "~~~~~";
 }
 
 void choice::rat_story(Player &x, Status &y) {
@@ -135,7 +135,7 @@ void choice::rat_story(Player &x, Status &y) {
         y.showStats(x);
     }
     x.Aging();
-    std::cout<<'\n' << "~~~~~YEAR "<< x.showAge() <<"~~~~~";
+    std::cout << '\n' << "~~~~~YEAR " << x.showAge() << "~~~~~";
 }
 
 void choice::learn_words(Player &x, Status &y) {
@@ -143,28 +143,28 @@ void choice::learn_words(Player &x, Status &y) {
               << "Your mother is trying to teach you how to speak! Frustrated because you can't repeat after her, "
                  "she says a swear world. Would you repeat the bad word? [y/n]" << '\n';
     std::cin >> option;
-    if (option == 'y' ) {
+    if (option == 'y') {
         std::cout << '\n'
                   << "She starts screaming at you. You start to cry. Trauma starts during childhood: every year "
                      "your fun will decrease by 5";
         nerf_fun = true;
-        y . PermanentNerfFun();
+        y.PermanentNerfFun();
         if (buff_hygiene)
-            y . PermanentBuffHygiene();
-        y . showStats(x);
+            y.PermanentBuffHygiene();
+        y.showStats(x);
     }
-    if (option == 'n' ) {
+    if (option == 'n') {
         std::cout << '\n'
                   << "Seeing her sad makes you feel bad so you try harder to say a world. You succeed and she "
                      "gives you a candy. Health -2, Fun +20 ";
-        if ( y . ReturnFun() <= 20 )
-            y . ChangeStats(- 2, 0, 20, 0);
+        if (y.ReturnFun() <= 20)
+            y.ChangeStats(-2, 0, 20, 0);
         else
-            y . ChangeStats(- 2, 0, 100 - y . ReturnFun(), 0);
+            y.ChangeStats(-2, 0, 100 - y.ReturnFun(), 0);
         if (buff_hygiene)
-            y . PermanentBuffHygiene();
-        y . showStats(x);
+            y.PermanentBuffHygiene();
+        y.showStats(x);
     }
     x.Aging();
-    std::cout<<'\n' << "~~~~~YEAR "<< x.showAge() <<"~~~~~";
+    std::cout << '\n' << "~~~~~YEAR " << x.showAge() << "~~~~~";
 }
