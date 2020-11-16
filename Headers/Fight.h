@@ -10,14 +10,13 @@
 
 class fight {
     unsigned int round;
-    weapons x;
     opponent y;
 public:
     fight();
 
     ~fight() = default;
 
-    void Attack(Status);
+    void Attack(Status, weapon &);
 };
 
 #endif //MAIN_CPP_FIGHT_H

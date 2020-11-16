@@ -13,19 +13,19 @@ class choice {
     bool nerf_fun = false;
 
 public:
-    choice(Player, Status);
+    choice(Status &);
 
     ~choice() = default;
 
-    bool ReturnBuffHygiene();
+    bool ReturnBuffHygiene() const;
 
-    bool ReturnNerfFun();
+    bool ReturnNerfFun() const;
 
-    void learn_words(Player &x, Status &y);
+    void learn_words(Status &y);
 
-    void rat_story(Player &x, Status &y);
+    void rat_story(Status &y);
 
-    void baby_story(Player &x, Status &y) const;
+    void baby_story(Status &y) const;
 };
 
 #endif //MAIN_CPP_CHOICE_H

@@ -12,7 +12,7 @@ class Player {
     unsigned int age = 0;
     bool dead = false;
 public:
-    explicit Player(std::string name);
+    explicit Player();
 
     ~Player();
 
@@ -20,9 +20,9 @@ public:
 
     int Difficulty() const;
 
-    unsigned int showAge() const;
+    virtual unsigned int showAge() const;
 
-    void Death();
+    virtual void Death();
 
     int Luck() const;
 

@@ -98,3 +98,9 @@ opponent &opponent::operator=(const opponent &a) {
     this->enemy_life = a.enemy_life;
     return (*this);
 }
+
+opponent::opponent(opponent &a) {
+    this->enemy = a.enemy;
+    this->enemy_dmg = a.enemy_dmg;
+    this->enemy_life = a.enemy_life;
+}

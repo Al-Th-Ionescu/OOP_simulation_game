@@ -22,6 +22,8 @@ public:
     int ReturnEnemyDmg() const;
 
     opponent &operator=(const opponent &);
+
+    opponent(opponent &);
 };
 
 #endif //MAIN_CPP_OPPONENT_H

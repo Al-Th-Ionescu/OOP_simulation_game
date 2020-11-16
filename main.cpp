@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string>
-#include <time.h>
 #include "Headers/Player.h"
 #include "Headers/Weapons.h"
 #include "Headers/Opponent.h"
@@ -10,14 +7,13 @@
 
 
 int main() {
-    std::string name;
-    Player x(name);
     Status y;
-    x.showPlayer();
-    y.showStats(x);
-    fight a;
-    a.Attack(y);
-
-    // choice(x,y);
+    y.showPlayer();
+    y.ShowInitStats();
+//    weapon b;
+//    b.GetWeapon();
+//    fight a;
+//    a.Attack(y, b);
+    choice t(y);
     return 0;
 }

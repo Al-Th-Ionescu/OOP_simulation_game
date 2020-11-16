@@ -4,8 +4,9 @@
 #include <iostream>
 #include <string>
 #include "Player.h"
+#include "Weapons.h"
 
-class Status {
+class Status : public Player {
     int health{};
     int hygiene = 100;
     int fun = 100;
@@ -13,13 +14,13 @@ class Status {
 
 public:
 
-    void SetWealth(Player &);
+    void SetWealth();
 
-    void showStats(Player);
+    void ShowInitStats();
 
-    void Died(Player) const;
+    void Died();
 
-    void HealthLuck(const Player &);
+    void HealthLuck();
 
     void ChangeStats(int, int, int, int);
 
@@ -34,6 +35,11 @@ public:
     void PermanentNerfFun();
 
     void LoseHealth(int);
+
+    int ReturnHygiene() const;
+
+
+    friend std::ostream &operator<<(std::ostream &, Status &);
 };
 
 #endif //MAIN_CPP_STATUS_H
