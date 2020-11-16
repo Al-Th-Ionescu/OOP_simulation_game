@@ -269,18 +269,18 @@
             <td class="headerValue">CPPs/Choice.cpp</td>
             <td></td>
             <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">1</td>
-            <td class="headerTableEntry">113</td>
-            <td class="headerTableEntry" style="background-color:LightPink">0.9 %</td>
+            <td class="headerTableEntry">40</td>
+            <td class="headerTableEntry">115</td>
+            <td class="headerTableEntry" style="background-color:LightPink">34.8 %</td>
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2020-11-13 12:30:50</td>
+            <td class="headerValue">2020-11-16 22:46:34</td>
             <td></td>
             <td class="headerName">Branches:</td>
-            <td class="headerTableEntry">2</td>
-            <td class="headerTableEntry">164</td>
-            <td class="headerTableEntry" style="background-color:LightPink">1.2 %</td>
+            <td class="headerTableEntry">21</td>
+            <td class="headerTableEntry">148</td>
+            <td class="headerTableEntry" style="background-color:LightPink">14.2 %</td>
           </tr>
         </table>
       </td>
@@ -331,7 +331,7 @@
     <td align="right" class="lineno"><pre>5</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>bool choice::ReturnBuffHygiene() {</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>bool choice::ReturnBuffHygiene() const {</pre></td>
     </tr>
 
     <tr>
@@ -359,7 +359,7 @@
     <td align="right" class="lineno"><pre>9</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>bool choice::ReturnNerfFun() {</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>bool choice::ReturnNerfFun() const {</pre></td>
     </tr>
 
     <tr>
@@ -386,29 +386,29 @@
     <tr>
     <td align="right" class="lineno"><pre>13</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>choice::choice(Player x, Status y) {</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>choice::choice(Status &amp;y) {</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>14</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    if (x.Luck() % 7 &lt; 5) {</pre></td>
+    <td align="right" class="linebranch"><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 2 not taken">&cross;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    if (y.Luck() % 7 &lt; 5) {</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>15</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        std::cout &lt;&lt; '\n' &lt;&lt; " Do you want to fix your health issues? [y/n]" &lt;&lt; '\n';</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>        std::cout &lt;&lt; '\n' &lt;&lt; " Do you want to fix your health issues? [y/n]" &lt;&lt; '\n';</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>16</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        if (y.ReturnHealth() == 40)</pre></td>
+    <td align="right" class="linebranch"><span class="notTakenBranch" title="Branch 1 not taken">&cross;</span><span class="takenBranch" title="Branch 2 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>        if (y.ReturnHealth() == 40)</pre></td>
     </tr>
 
     <tr>
@@ -428,22 +428,22 @@
     <tr>
     <td align="right" class="lineno"><pre>19</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            std::cout &lt;&lt; " It will cost 50$" &lt;&lt; '\n';</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>            std::cout &lt;&lt; " It will cost 50$" &lt;&lt; '\n';</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>20</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        std::cin &gt;&gt; option;</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>        std::cin &gt;&gt; option;</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>21</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        if (option == 'y' &amp;&amp;</pre></td>
+    <td align="right" class="linebranch"><span class="notTakenBranch" title="Branch 0 not taken">&cross;</span><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 2 not taken">&cross;</span><span class="notTakenBranch" title="Branch 3 not taken">&cross;</span><br/><span class="notTakenBranch" title="Branch 4 not taken">&cross;</span><span class="takenBranch" title="Branch 5 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>        if (option == 'y' &amp;&amp;</pre></td>
     </tr>
 
     <tr>
@@ -462,9 +462,9 @@
 
     <tr>
     <td align="right" class="lineno"><pre>24</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        else if (option == 'n')</pre></td>
+    <td align="right" class="linebranch"><span class="notTakenBranch" title="Branch 0 not taken">&cross;</span><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>        else if (option == 'n')</pre></td>
     </tr>
 
     <tr>
@@ -483,9 +483,9 @@
 
     <tr>
     <td align="right" class="lineno"><pre>27</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            if (y.ReturnHealth() == 40)</pre></td>
+    <td align="right" class="linebranch"><span class="notTakenBranch" title="Branch 1 not taken">&cross;</span><span class="takenBranch" title="Branch 2 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>            if (y.ReturnHealth() == 40)</pre></td>
     </tr>
 
     <tr>
@@ -505,15 +505,15 @@
     <tr>
     <td align="right" class="lineno"><pre>30</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>                y.ChangeStats(25, 0, 0, -50);</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>                y.ChangeStats(25, 0, 0, -50);</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>31</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            std::cout &lt;&lt; "Your health got back to the maximum (100)!" &lt;&lt; '\n';</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>            std::cout &lt;&lt; "Your health got back to the maximum (100)!" &lt;&lt; '\n';</pre></td>
     </tr>
 
     <tr>
@@ -540,50 +540,50 @@
     <tr>
     <td align="right" class="lineno"><pre>35</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    x.Aging();</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    y.Aging();</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>36</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    std::cout &lt;&lt; '\n' &lt;&lt; "~~~~~YEAR " &lt;&lt; x.showAge() &lt;&lt; "~~~~~";</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    std::cout &lt;&lt; '\n' &lt;&lt; "~~~~~YEAR " &lt;&lt; y.showAge() &lt;&lt; "~~~~~";</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>37</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    randomize = rand();</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    randomize = rand();</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>38</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    while (x.showAge() &lt;= 2) {</pre></td>
+    <td align="right" class="linebranch"><span class="takenBranch" title="Branch 1 taken 2 times">&check;</span><span class="takenBranch" title="Branch 2 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>5</pre></td>
+    <td align="left" class="src coveredLine"><pre>    while (y.showAge() &lt;= 2) {</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>39</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        int aux = randomize % 3;</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>2</pre></td>
+    <td align="left" class="src coveredLine"><pre>        int aux = randomize % 3;</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>40</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        if (randomize % 3 == 0) {</pre></td>
+    <td align="right" class="linebranch"><span class="notTakenBranch" title="Branch 0 not taken">&cross;</span><span class="takenBranch" title="Branch 1 taken 2 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>2</pre></td>
+    <td align="left" class="src coveredLine"><pre>        if (randomize % 3 == 0) {</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>41</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            baby_story(x, y);</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>            baby_story(y);</pre></td>
     </tr>
 
     <tr>
@@ -602,16 +602,16 @@
 
     <tr>
     <td align="right" class="lineno"><pre>44</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        if (randomize % 3 == 1) {</pre></td>
+    <td align="right" class="linebranch"><span class="takenBranch" title="Branch 0 taken 1 times">&check;</span><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>2</pre></td>
+    <td align="left" class="src coveredLine"><pre>        if (randomize % 3 == 1) {</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>45</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            rat_story(x, y);</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>            rat_story(y);</pre></td>
     </tr>
 
     <tr>
@@ -630,16 +630,16 @@
 
     <tr>
     <td align="right" class="lineno"><pre>48</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        if (randomize % 3 == 2) {</pre></td>
+    <td align="right" class="linebranch"><span class="takenBranch" title="Branch 0 taken 1 times">&check;</span><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>2</pre></td>
+    <td align="left" class="src coveredLine"><pre>        if (randomize % 3 == 2) {</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>49</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            learn_words(x, y);</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>            learn_words(y);</pre></td>
     </tr>
 
     <tr>
@@ -651,16 +651,16 @@
 
     <tr>
     <td align="right" class="lineno"><pre>51</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        while (aux == randomize % 3)</pre></td>
+    <td align="right" class="linebranch"><span class="takenBranch" title="Branch 0 taken 2 times">&check;</span><span class="takenBranch" title="Branch 1 taken 2 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>6</pre></td>
+    <td align="left" class="src coveredLine"><pre>        while (aux == randomize % 3)</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>52</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            randomize = rand();</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>2</pre></td>
+    <td align="left" class="src coveredLine"><pre>            randomize = rand();</pre></td>
     </tr>
 
     <tr>
@@ -722,8 +722,8 @@
     <tr>
     <td align="right" class="lineno"><pre>61</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount "><pre></pre></td>
-    <td align="left" class="src "><pre>}</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>}</pre></td>
     </tr>
 
     <tr>
@@ -737,7 +737,7 @@
     <td align="right" class="lineno"><pre>63</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>void choice::baby_story(Player &amp;x, Status &amp;y) const {</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>void choice::baby_story(Status &amp;y) const {</pre></td>
     </tr>
 
     <tr>
@@ -779,7 +779,7 @@
     <td align="right" class="lineno"><pre>69</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        if (x.Difficulty() != 0) {</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>        if (y.Difficulty() != 0) {</pre></td>
     </tr>
 
     <tr>
@@ -835,7 +835,7 @@
     <td align="right" class="lineno"><pre>77</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            y.showStats(x);</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>            std::cout &lt;&lt; y;</pre></td>
     </tr>
 
     <tr>
@@ -891,7 +891,7 @@
     <td align="right" class="lineno"><pre>85</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            y.showStats(x);</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>            std::cout &lt;&lt; y;</pre></td>
     </tr>
 
     <tr>
@@ -919,7 +919,7 @@
     <td align="right" class="lineno"><pre>89</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        if (x.Difficulty() != 0) {</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>        if (y.Difficulty() != 0) {</pre></td>
     </tr>
 
     <tr>
@@ -961,7 +961,7 @@
     <td align="right" class="lineno"><pre>95</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            y.showStats(x);</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>            std::cout &lt;&lt; y;</pre></td>
     </tr>
 
     <tr>
@@ -1017,7 +1017,7 @@
     <td align="right" class="lineno"><pre>103</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>            y.showStats(x);</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>            std::cout &lt;&lt; y;</pre></td>
     </tr>
 
     <tr>
@@ -1038,14 +1038,14 @@
     <td align="right" class="lineno"><pre>106</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    x.Aging();</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>    y.Aging();</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>107</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    std::cout &lt;&lt; '\n' &lt;&lt; "~~~~~YEAR " &lt;&lt; x.showAge() &lt;&lt; "~~~~~";</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>    std::cout &lt;&lt; '\n' &lt;&lt; "~~~~~YEAR " &lt;&lt; y.showAge() &lt;&lt; "~~~~~";</pre></td>
     </tr>
 
     <tr>
@@ -1065,8 +1065,8 @@
     <tr>
     <td align="right" class="lineno"><pre>110</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>void choice::rat_story(Player &amp;x, Status &amp;y) {</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>void choice::rat_story(Status &amp;y) {</pre></td>
     </tr>
 
     <tr>
@@ -1079,22 +1079,22 @@
     <tr>
     <td align="right" class="lineno"><pre>112</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>              &lt;&lt; '\n' &lt;&lt; "2)Cry for help" &lt;&lt; '\n';</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>              &lt;&lt; '\n' &lt;&lt; "2)Cry for help" &lt;&lt; '\n';</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>113</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    std::cin &gt;&gt; option;</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    std::cin &gt;&gt; option;</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>114</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    if (option == '1') {</pre></td>
+    <td align="right" class="linebranch"><span class="notTakenBranch" title="Branch 0 not taken">&cross;</span><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    if (option == '1') {</pre></td>
     </tr>
 
     <tr>
@@ -1164,7 +1164,7 @@
     <td align="right" class="lineno"><pre>124</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        y.showStats(x);</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>        std::cout &lt;&lt; y;</pre></td>
     </tr>
 
     <tr>
@@ -1176,9 +1176,9 @@
 
     <tr>
     <td align="right" class="lineno"><pre>126</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    if (option == '2') {</pre></td>
+    <td align="right" class="linebranch"><span class="notTakenBranch" title="Branch 0 not taken">&cross;</span><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    if (option == '2') {</pre></td>
     </tr>
 
     <tr>
@@ -1241,7 +1241,7 @@
     <td align="right" class="lineno"><pre>135</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        y.showStats(x);</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>        std::cout &lt;&lt; y;</pre></td>
     </tr>
 
     <tr>
@@ -1254,22 +1254,22 @@
     <tr>
     <td align="right" class="lineno"><pre>137</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    x.Aging();</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    y.Aging();</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>138</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    std::cout &lt;&lt; '\n' &lt;&lt; "~~~~~YEAR " &lt;&lt; x.showAge() &lt;&lt; "~~~~~";</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    std::cout &lt;&lt; '\n' &lt;&lt; "~~~~~YEAR " &lt;&lt; y.showAge() &lt;&lt; "~~~~~";</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>139</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount "><pre></pre></td>
-    <td align="left" class="src "><pre>}</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>}</pre></td>
     </tr>
 
     <tr>
@@ -1282,8 +1282,8 @@
     <tr>
     <td align="right" class="lineno"><pre>141</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>void choice::learn_words(Player &amp;x, Status &amp;y) {</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>void choice::learn_words(Status &amp;y) {</pre></td>
     </tr>
 
     <tr>
@@ -1303,22 +1303,22 @@
     <tr>
     <td align="right" class="lineno"><pre>144</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>                 "she says a swear world. Would you repeat the bad word? [y/n]" &lt;&lt; '\n';</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>                 "she says a swear world. Would you repeat the bad word? [y/n]" &lt;&lt; '\n';</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>145</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    std::cin &gt;&gt; option;</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    std::cin &gt;&gt; option;</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>146</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    if (option == 'y') {</pre></td>
+    <td align="right" class="linebranch"><span class="notTakenBranch" title="Branch 0 not taken">&cross;</span><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    if (option == 'y') {</pre></td>
     </tr>
 
     <tr>
@@ -1374,7 +1374,7 @@
     <td align="right" class="lineno"><pre>154</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        y.showStats(x);</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>        std::cout &lt;&lt; y;</pre></td>
     </tr>
 
     <tr>
@@ -1386,9 +1386,9 @@
 
     <tr>
     <td align="right" class="lineno"><pre>156</pre></td>
-    <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    if (option == 'n') {</pre></td>
+    <td align="right" class="linebranch"><span class="notTakenBranch" title="Branch 0 not taken">&cross;</span><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    if (option == 'n') {</pre></td>
     </tr>
 
     <tr>
@@ -1458,7 +1458,7 @@
     <td align="right" class="lineno"><pre>166</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>        y.showStats(x);</pre></td>
+    <td align="left" class="src uncoveredLine"><pre>        std::cout &lt;&lt; y;</pre></td>
     </tr>
 
     <tr>
@@ -1471,21 +1471,21 @@
     <tr>
     <td align="right" class="lineno"><pre>168</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    x.Aging();</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    y.Aging();</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>169</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
-    <td align="left" class="src uncoveredLine"><pre>    std::cout &lt;&lt; '\n' &lt;&lt; "~~~~~YEAR " &lt;&lt; x.showAge() &lt;&lt; "~~~~~";</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    std::cout &lt;&lt; '\n' &lt;&lt; "~~~~~YEAR " &lt;&lt; y.showAge() &lt;&lt; "~~~~~";</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>170</pre></td>
     <td align="right" class="linebranch"><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 2 not taken">&cross;</span><span class="takenBranch" title="Branch 3 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 4 not taken">&cross;</span><br/></td>
-    <td align="right" class="linecount coveredLine"><pre>3</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>4</pre></td>
     <td align="left" class="src coveredLine"><pre>}</pre></td>
     </tr>
 
