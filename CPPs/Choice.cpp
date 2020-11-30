@@ -33,32 +33,39 @@ choice::choice(Status &y) {
 
     }
     y.Aging();
+}
+
+void choice::Age3(Status &y) {
     std::cout << '\n' << "~~~~~YEAR " << y.showAge() << "~~~~~";
-    randomize = rand();
+    int randomize = rand();
     while (y.showAge() <= 2) {
         int aux = randomize % 3;
         if (randomize % 3 == 0) {
             baby_story(y);
+            std::cout << '\n' << "~~~~~YEAR " << y.showAge() << "~~~~~";
 
         }
         if (randomize % 3 == 1) {
             rat_story(y);
+            std::cout << '\n' << "~~~~~YEAR " << y.showAge() << "~~~~~";
 
         }
         if (randomize % 3 == 2) {
             learn_words(y);
+            std::cout << '\n' << "~~~~~YEAR " << y.showAge() << "~~~~~";
         }
         while (aux == randomize % 3)
             randomize = rand();
     }
-
-    /* while (x.showAge() <= 10 && x.showAge() >2 ){
-         if (randomize % 10 ==0)
-         {
-             std::cout<< '\n' << " ";
-         }
-     }*/
 }
+
+/* while (x.showAge() <= 10 && x.showAge() >2 ){
+     if (randomize % 10 ==0)
+     {
+         std::cout<< '\n' << " ";
+     }
+ }*/
+
 
 void choice::baby_story(Status &y) const {
     std::cout << '\n' << "Your mother cannot breastfeed you no more. Should you try the baby formula? [y/n]"
@@ -74,7 +81,6 @@ void choice::baby_story(Status &y) const {
                 y.PermanentBuffHygiene();
             if (nerf_fun)
                 y.PermanentNerfFun();
-            std::cout << y;
         } else {
             std::cout << '\n' << " You don't have enough money for the formula. Health -5, Fun -20.";
             y.ChangeStats(-5, 0, -20, 0);
@@ -82,7 +88,6 @@ void choice::baby_story(Status &y) const {
                 y.PermanentBuffHygiene();
             if (nerf_fun)
                 y.PermanentNerfFun();
-            std::cout << y;
         }
     }
     if (option == 'n') {
@@ -92,7 +97,6 @@ void choice::baby_story(Status &y) const {
                 y.PermanentBuffHygiene();
             if (nerf_fun)
                 y.PermanentNerfFun();
-            std::cout << y;
         } else {
             std::cout << '\n' << "Too bad you don't have enough money to buy cow milk. Health -5, Fun -20.";
             y.ChangeStats(-5, 0, -20, 0);
@@ -100,11 +104,10 @@ void choice::baby_story(Status &y) const {
                 y.PermanentBuffHygiene();
             if (nerf_fun)
                 y.PermanentNerfFun();
-            std::cout << y;
         }
     }
+    std::cout << '\n' << y;
     y.Aging();
-    std::cout << '\n' << "~~~~~YEAR " << y.showAge() << "~~~~~";
 }
 
 void choice::rat_story(Status &y) {
@@ -121,7 +124,6 @@ void choice::rat_story(Status &y) {
             y.ChangeStats(0, -5, 100 - y.ReturnFun(), 0);
         if (nerf_fun)
             y.PermanentNerfFun();
-        std::cout << y;
     }
     if (option == '2') {
         std::cout << '\n'
@@ -132,10 +134,9 @@ void choice::rat_story(Status &y) {
         y.PermanentBuffHygiene();
         if (nerf_fun)
             y.PermanentNerfFun();
-        std::cout << y;
     }
+    std::cout << '\n' << y;
     y.Aging();
-    std::cout << '\n' << "~~~~~YEAR " << y.showAge() << "~~~~~";
 }
 
 void choice::learn_words(Status &y) {
@@ -151,7 +152,6 @@ void choice::learn_words(Status &y) {
         y.PermanentNerfFun();
         if (buff_hygiene)
             y.PermanentBuffHygiene();
-        std::cout << y;
     }
     if (option == 'n') {
         std::cout << '\n'
@@ -163,8 +163,88 @@ void choice::learn_words(Status &y) {
             y.ChangeStats(-2, 0, 100 - y.ReturnFun(), 0);
         if (buff_hygiene)
             y.PermanentBuffHygiene();
-        std::cout << y;
     }
+    std::cout << '\n' << y;
     y.Aging();
+}
+
+void choice::cat_story(Status &y) {
+    std::cout << '\n' << "Wandering in your garden you hear a soft sound. "
+                         "You follow the noise and found a small baby kitten. "
+                         "Should you pick it up and bring it home? [y/n]" << '\n';
+    std::cin >> option;
+    if (option == 'y') {
+        std::cout << '\n' << "Your parents are mad because you did not ask for permission first."
+                             " Also the cat pooped on your mother's rug! Hygiene -5 , Fun +20" << '\n';
+        if (y.ReturnFun() > 20)
+            y.ChangeStats(0, -5, 100 - y.ReturnFun(), 0);
+        else
+            y.ChangeStats(0, -5, 20, 0);
+    } else {
+        std::cout << '\n' << "You are sad leaving the kitten behind. You go home crying. "
+                             "The next day you pass the place where you've seen the kitten and see its dead body."
+                             "The feeling of guilt makes you feel miserable. Fun -30";
+        y.ChangeStats(0, 0, -30, 0);
+    }
+    if (nerf_fun)
+        y.PermanentNerfFun();
+    if(buff_hygiene)
+        y.PermanentBuffHygiene();
+    std::cout << '\n' << y;
+    y.Aging();
+}
+
+void choice::helping_friend(Status &y) {
+    int random= rand()%2;
+    if (random == 0)
+    {
+        std::cout<<'\n'<<"Your friend Sophia invited you over. Should you go? [y/n]"<<'\n';
+        std::cin>>option;
+        if (option=='y'){
+            std::cout<<"You had a great time together! She spoke about how her mother taught her the importance"
+                       "of avoiding getting sick by not eating food that has been dropped on the ground!"
+                       "You won't do that from now on. Health +5, Hygiene +15"<<'\n';
+            if (y.ReturnHealth() > 95 )
+                y.ChangeStats(100-y.ReturnHealth(),0,0,0);
+            else
+                y.ChangeStats(5,0,0,0);
+            if (y.ReturnHygiene()>85)
+                y.ChangeStats(0,100-y.ReturnHygiene(),0,0);
+            else
+                y.ChangeStats(0,15,0,0);
+        }
+        else{
+            std::cout<<'\n'<<"What a boring day! You should've visit your friend! Fun -5"<<'\n';
+            y.ChangeStats(0,0,-5,0);
+        }
+    }
+    if (random)
+    {
+        std::cout<<"\n"<<"Your friend Daniel invited you over. Should you go? [y/n]"<<'\n';
+        std::cin>>option;
+        if (option == 'y'){
+            std::cout<<'\n'<<"You had a great time together! Daniel showed you his toys and you played"
+                             "for hours! Life is not that bad when you have a friend to spend your time with!"
+                             "Fun +30"<<'\n';
+            y.ChangeStats(0,0,30,0);
+        }
+        else
+            std::cout<<'\n'<<"What a boring day! You did nothing at all and wasted an important day of your life."
+                             "Fun -10";
+        y.ChangeStats(0,0,-10,0);
+    }
+    if (buff_hygiene)
+        y.PermanentBuffHygiene();
+    if (nerf_fun)
+        y.PermanentNerfFun();
+    std::cout<<'\n'<<y;
+    y.Aging();
+
+}
+
+void choice::Age13(Status &y) {
+    cat_story(y);
+    std::cout << '\n' << "~~~~~YEAR " << y.showAge() << "~~~~~";
+    helping_friend(y);
     std::cout << '\n' << "~~~~~YEAR " << y.showAge() << "~~~~~";
 }

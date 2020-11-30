@@ -15,5 +15,7 @@ int main() {
 //    fight a;
 //    a.Attack(y, b);
     choice t(y);
+    t.Age3(y);
+    t.Age13(y);
     return 0;
 }

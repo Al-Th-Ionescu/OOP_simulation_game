@@ -7,7 +7,6 @@
 #include "Player.h"
 
 class choice {
-    int randomize;
     char option;
     bool buff_hygiene = false;
     bool nerf_fun = false;
@@ -21,11 +20,21 @@ public:
 
     bool ReturnNerfFun() const;
 
-    void learn_words(Status &y);
+    void Age3(Status &);
 
-    void rat_story(Status &y);
+    void Age13(Status &);
 
-    void baby_story(Status &y) const;
+    void cat_story(Status &);
+
+    void learn_words(Status &);
+
+    void rat_story(Status &);
+
+    void helping_friend(Status &);
+
+    void baby_story(Status &) const;
+
+
 };
 
 #endif //MAIN_CPP_CHOICE_H
