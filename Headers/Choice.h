@@ -7,12 +7,11 @@
 #include "Player.h"
 
 class choice {
-    char option;
     bool buff_hygiene = false;
     bool nerf_fun = false;
 
 public:
-    choice(Status &);
+    choice(Player &, Status &);
 
     ~choice() = default;
 
@@ -20,19 +19,19 @@ public:
 
     bool ReturnNerfFun() const;
 
-    void Age3(Status &);
+    void Age3(Player &, Status &);
 
-    void Age13(Status &);
+    void Age13(Player &, Status &) const;
 
-    void cat_story(Status &);
+    void cat_story(Player &, Status &) const;
 
-    void learn_words(Status &);
+    void learn_words(Player &, Status &);
 
-    void rat_story(Status &);
+    void rat_story(Player &, Status &);
 
-    void helping_friend(Status &);
+    void helping_friend(Player &, Status &) const;
 
-    void baby_story(Status &) const;
+    void baby_story(Player &, Status &) const;
 
 
 };

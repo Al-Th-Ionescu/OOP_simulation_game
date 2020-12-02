@@ -6,7 +6,6 @@
 #include <time.h>
 
 class Player {
-
     std::string name;
     int luck{};
     unsigned int age = 0;
@@ -16,17 +15,19 @@ public:
 
     ~Player();
 
-    void showPlayer();
+    void ShowPlayer();
 
     int Difficulty() const;
 
-    virtual unsigned int showAge() const;
+    unsigned int ReturnAge() const;
 
-    virtual void Death();
+    void Death();
 
     int Luck() const;
 
     void Aging();
+
+    bool IsDead() const;
 };
 
 #endif //MAIN_CPP_PLAYER_H

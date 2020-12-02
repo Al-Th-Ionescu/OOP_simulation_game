@@ -16,7 +16,7 @@ public:
 
     ~fight() = default;
 
-    void Attack(Status, weapon &);
+    void Attack(Player &, Status &, weapon &);
 };
 
 #endif //MAIN_CPP_FIGHT_H

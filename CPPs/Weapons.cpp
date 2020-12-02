@@ -2,7 +2,6 @@
 #include "../Headers/Weapons.h"
 
 weapon::weapon() {
-    init();
 }
 
 void weapon::init() {
@@ -62,7 +61,7 @@ int weapon::ReturnDmg() const {
 
 void weapon::Use() {
     if (this->name != "fist")
-        durability = durability - (rand() % 90);
+        durability = durability - (rand() % 8);
 }
 
 int weapon::ReturnDur() const {

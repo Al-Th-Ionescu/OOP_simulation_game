@@ -6,21 +6,21 @@
 #include "Player.h"
 #include "Weapons.h"
 
-class Status : public Player {
+class Status {
     int health{};
     int hygiene = 100;
     int fun = 100;
     int wealth;
-
+    unsigned int years = 0;
 public:
 
-    void SetWealth();
+    void SetWealth(Player &);
 
-    void ShowInitStats();
+    void ShowInitStats(Player &);
 
-    void Died();
+    void Died(Player &);
 
-    void HealthLuck();
+    void HealthLuck(Player &);
 
     void ChangeStats(int, int, int, int);
 
@@ -38,6 +38,9 @@ public:
 
     int ReturnHygiene() const;
 
+    void GetAge(Player &);
+
+    unsigned int ReturnYears();
 
     friend std::ostream &operator<<(std::ostream &, Status &);
 };

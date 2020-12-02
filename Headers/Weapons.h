@@ -17,7 +17,7 @@ public:
 
     void GetWeapon();
 
-    int ReturnDmg() const;
+    virtual int ReturnDmg() const;
 
     void SetDurability();
 

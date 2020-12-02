@@ -7,11 +7,17 @@ fight::fight() {
 
 }
 
-void fight::Attack(Status z, weapon &b) {
+void fight::Attack(Player &p, Status &z, weapon &b) {
     std::cout << '\n' << "Would you like to fight this opponent? [y/n]" << '\n';
     char option;
     std::cin >> option;
-    if (option == 'y') {
+    if (tolower(option) != 'y' && tolower(option) != 'n') {
+        option = 'n';
+        std::cout << '\n'
+                  << "You did not select the right option! So you will just missed the opportunity to fight the enemy!"
+                  << '\n';
+    }
+    if (tolower(option) == 'y') {
         opponent a(y);
         while (a.ReturnEnemyHealth() > 0 && z.ReturnHealth() > 0) {
             std::cout << '\n' << "~~~~~Round " << round << "~~~~~~~" << '\n';
@@ -38,7 +44,7 @@ void fight::Attack(Status z, weapon &b) {
             }
             round++;
         }
-    } else
+    } else if (tolower(option) == 'n')
         std::cout << "You decided not to attack the " << y.ReturnName();
-
+    z.Died(p);
 }

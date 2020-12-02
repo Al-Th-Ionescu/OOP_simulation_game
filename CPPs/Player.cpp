@@ -8,8 +8,7 @@ Player::Player() {
 }
 
 Player::~Player() {
-    if (dead)
-        std::cout << '\n' << name << " has died at age of " << showAge() << ".";
+    std::cout << '\n' << "~~~~~~~~~~Game Over!~~~~~~~~~~" << '\n';
 }
 
 int Player::Difficulty() const {
@@ -20,10 +19,10 @@ int Player::Difficulty() const {
     return 2;
 }
 
-
-unsigned int Player::showAge() const {
+unsigned int Player::ReturnAge() const {
     return age;
 }
+
 
 int Player::Luck() const {
     return luck;
@@ -33,7 +32,7 @@ void Player::Death() {
     dead = true;
 }
 
-void Player::showPlayer() {
+void Player::ShowPlayer() {
     {
         std::cout << '\n' << "Your character was created successfully!" << '\n' << " Your name is " << name << "."
                   << '\n';
@@ -51,4 +50,8 @@ void Player::showPlayer() {
 
 void Player::Aging() {
     age++;
+}
+
+bool Player::IsDead() const {
+    return dead;
 }
