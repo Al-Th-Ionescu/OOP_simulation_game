@@ -28,6 +28,7 @@ public:
     void Aging();
 
     bool IsDead() const;
+
 };
 
 #endif //MAIN_CPP_PLAYER_H

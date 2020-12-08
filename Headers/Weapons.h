@@ -5,31 +5,28 @@
 #include <string>
 
 class weapon {
-    std::string name;
-    int min_dmg{};
-    int max_dmg{};
-    int durability{};
+    int durability=100;
 public:
 
     weapon();
 
-    ~weapon() = default;
+    virtual ~weapon() =0;
 
-    void GetWeapon();
+    virtual void Use();
 
-    virtual int ReturnDmg() const;
+    virtual int GetDurability();
 
-    void SetDurability();
+    virtual void ShowDurability();
 
-    void Use();
+    virtual int ReturnDmg()=0;
 
-    int ReturnDur() const;
+    virtual std::string ReturnWeap()=0;
 
-    std::string ReturnWeap();
+    virtual void init();
 
-    void BreakWeapon();
+    virtual void BreakWeapon();
 
-    void init();
+    virtual int ReturnMinDmg()=0;
 };
 
 

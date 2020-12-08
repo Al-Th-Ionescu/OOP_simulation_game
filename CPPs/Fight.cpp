@@ -24,11 +24,11 @@ void fight::Attack(Player &p, Status &z, weapon &b) {
             if (round % 2 == 1) {
                 int dmg = b.ReturnDmg();
                 std::cout << "You have attacked the " << a.ReturnName() << " and dealt " << dmg << " dmg." << '\n';
-                if (b.ReturnWeap() != "fist") {
+                if (b.ReturnMinDmg() != 0) {
                     b.Use();
                     b.BreakWeapon();
-                    if (b.ReturnWeap() != "fist")
-                        std::cout << "Your " << b.ReturnWeap() << " has " << b.ReturnDur() << " durability left"
+                    if (b.ReturnMinDmg() != 0)
+                        std::cout << "Your " << b.ReturnWeap() << " has " << b.GetDurability() << " durability left"
                                   << '\n';
                 }
                 a.TakeDmg(dmg);

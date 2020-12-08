@@ -4,7 +4,7 @@
 #include "Headers/Status.h"
 #include "Headers/Fight.h"
 #include "Headers/Choice.h"
-#include "Headers/SpecialWeapon.h"
+#include "Headers/Stick.h"
 
 
 int main() {
@@ -12,20 +12,20 @@ int main() {
     Status y;
     p.ShowPlayer();
     y.ShowInitStats(p);
-    weapon b;
-    b.GetWeapon();
-    SpecialWeapon c;
-    c.GetWeapon(b, y);
-    // fight a;
-    //   a.Attack(p,y, c);
+    weapon* d, *z, *q;
+    stick c;
+    d=&c;
+    fight a;
+    a.Attack(p,y, *d);
 
     //choice t(p,y);
     //   t.Age3(p,y);
     //  t.Age13(p,y);
     try {
-        throw p.IsDead();
+        if(p.IsDead())
+            throw(std::runtime_error("DEAD"));
     }
-    catch (...) {
+    catch (std::exception&) {
         std::cout << "You have died!";
     }
     return 0;
