@@ -15,9 +15,11 @@ public:
 
     ~choice() = default;
 
-    bool ReturnBuffHygiene() const;
+    static void VerifDead(Player&);
 
-    bool ReturnNerfFun() const;
+    void Nerf(Status&) const;
+
+    void Buff(Status&) const;
 
     void Age3(Player &, Status &);
 
@@ -25,13 +27,35 @@ public:
 
     void cat_story(Player &, Status &) const;
 
+    static void cat_story_result_yes(Player&,Status&) ;
+
+    static void cat_story_result_no(Player&,Status&) ;
+
     void learn_words(Player &, Status &);
+
+    void learn_words_result_yes(Player&,Status&);
+
+    void learn_words_result_no(Player&,Status&) const;
 
     void rat_story(Player &, Status &);
 
+    void rat_story_result_1(Player&,Status&) const;
+
+    void rat_story_result_2(Player&,Status&);
+
     void helping_friend(Player &, Status &) const;
 
+    static void helping_friend_result_1(Player&,Status&) ;
+
+    static void helping_friend_result_2(Player&,Status&) ;
+
+    static void helping_friend_result_3(Player&,Status&);
+
     void baby_story(Player &, Status &) const;
+
+    void baby_story_result_yes(Player&, Status &) const;
+
+    void baby_story_result_no(Player&, Status &) const;
 
 
 };

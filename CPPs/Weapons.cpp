@@ -3,9 +3,9 @@
 
 weapon::weapon() {
     durability=100;
-};
+}
 
-weapon::~weapon(){}
+weapon::~weapon()= default;
 
 void weapon::Use(){
     durability=durability- (rand()%8);
@@ -31,29 +31,16 @@ void weapon::BreakWeapon() {
     }
 }
 
+void weapon::ShowRemain() {
+    std::cout << " has " << durability << " durability left"
+              << '\n';
+}
 
-//            this->name = "sword";
-//            std::cout << '\n' << "You have found a " << this->name << ". Careful not to cut yourself!" << '\n';
-//            this->min_dmg = rand() % 25 + 1;
-//            this->max_dmg = min_dmg + 10;
-//            SetDurability();
-//            break;
-//        case 2:
-//            this->name = "bow";
-//            std::cout << '\n' << "You have found a " << this->name << ". Make the arrows rain!" << '\n';
-//            this->min_dmg = rand() % 35 + 1;
-//            this->max_dmg = min_dmg + 20;
-//            SetDurability();
-//            break;
-//        case 3:
-//            this->name = "dagger";
-//            std::cout << '\n' << "You have found a " << this->name << ". Stab the enemies from behind!" << '\n';
-//            this->min_dmg = rand() % 15 + 1;
-//            this->max_dmg = min_dmg + 5;
-//            SetDurability();
-//            break;
-//        default:
-
+void weapon::UseNotBroken() {
+    Use();
+    BreakWeapon();
+    ShowRemain();
+}
 
 
 

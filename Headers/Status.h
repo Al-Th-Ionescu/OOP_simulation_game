@@ -18,7 +18,7 @@ public:
 
     void ShowInitStats(Player &);
 
-    void Died(Player &);
+    void Died(Player &) const;
 
     void HealthLuck(Player &);
 
@@ -40,7 +40,7 @@ public:
 
     void GetAge(Player &);
 
-    unsigned int ReturnYears();
+    unsigned int ReturnYears() const;
 
     friend std::ostream &operator<<(std::ostream &, Status &);
 };

@@ -7,7 +7,28 @@ fight::fight() {
 
 }
 
-void fight::Attack(Player &p, Status &z, weapon &b) {
+void fight::YourTurn(Player &p, Status &s, weapon &w, opponent& a) const {
+    if (round % 2 == 1) {
+        int dmg = w.ReturnDmg();
+        std::cout << "You have attacked the " << a.ReturnName() << " and dealt " << dmg << " dmg." << '\n';
+        w.UseNotBroken();
+        a.TakeDmg(dmg);
+        if (a.ReturnEnemyHealth() > 0)
+            std::cout << "The " << a.ReturnName() << " has " << a.ReturnEnemyHealth() << " life points left."
+                      << '\n';
+    }
+}
+
+void fight::OpponentTurn(Player &p, Status &s, opponent & a) const {
+    if (round % 2 == 0) {
+        std::cout << '\n' << a.ReturnName() << " has attacked you and dealt " << a.ReturnEnemyDmg() << " dmg."
+                  << '\n';
+        s.LoseHealth(a.ReturnEnemyDmg());
+        std::cout << "Your life is " << s.ReturnHealth() << "." << '\n';
+    }
+}
+
+void fight::Attack(Player &p, Status &z, weapon &w) {
     std::cout << '\n' << "Would you like to fight this opponent? [y/n]" << '\n';
     char option;
     std::cin >> option;
@@ -21,30 +42,13 @@ void fight::Attack(Player &p, Status &z, weapon &b) {
         opponent a(y);
         while (a.ReturnEnemyHealth() > 0 && z.ReturnHealth() > 0) {
             std::cout << '\n' << "~~~~~Round " << round << "~~~~~~~" << '\n';
-            if (round % 2 == 1) {
-                int dmg = b.ReturnDmg();
-                std::cout << "You have attacked the " << a.ReturnName() << " and dealt " << dmg << " dmg." << '\n';
-                if (b.ReturnMinDmg() != 0) {
-                    b.Use();
-                    b.BreakWeapon();
-                    if (b.ReturnMinDmg() != 0)
-                        std::cout << "Your " << b.ReturnWeap() << " has " << b.GetDurability() << " durability left"
-                                  << '\n';
-                }
-                a.TakeDmg(dmg);
-                if (a.ReturnEnemyHealth() > 0)
-                    std::cout << "The " << a.ReturnName() << " has " << a.ReturnEnemyHealth() << " life points left."
-                              << '\n';
-            }
-            if (round % 2 == 0) {
-                std::cout << '\n' << a.ReturnName() << " has attacked you and dealt " << a.ReturnEnemyDmg() << " dmg."
-                          << '\n';
-                z.LoseHealth(a.ReturnEnemyDmg());
-                std::cout << "Your life is " << z.ReturnHealth() << "." << '\n';
-            }
+            YourTurn(p,z,w,a);
+           OpponentTurn(p,z,a);
             round++;
         }
     } else if (tolower(option) == 'n')
         std::cout << "You decided not to attack the " << y.ReturnName();
     z.Died(p);
+        if (p.IsDead())
+            throw (std::runtime_error("DEAD"));
 }

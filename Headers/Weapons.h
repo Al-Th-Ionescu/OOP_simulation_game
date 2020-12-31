@@ -27,6 +27,12 @@ public:
     virtual void BreakWeapon();
 
     virtual int ReturnMinDmg()=0;
+
+    virtual void ShowRemain();
+
+    virtual void UseNotBroken();
+
+
 };
 
 

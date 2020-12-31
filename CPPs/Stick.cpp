@@ -9,15 +9,6 @@ stick::stick() {
     this->max_dmg = min_dmg + 15;
     std::cout << '\n' << "Your " << this->name << " has " << this->min_dmg << "-" << this->max_dmg << " dmg." << '\n';
 }
-
-void stick::Use() {
-    weapon::Use();
-}
-
-int stick::GetDurability() {
-    weapon::GetDurability();
-}
-
 void stick::ShowDurability() {
     std::cout << "\nYour " << name << " has ";
     weapon::ShowDurability();
@@ -45,4 +36,15 @@ int stick::ReturnMinDmg() {
     return min_dmg;
 }
 
+void stick::ShowRemain() {
+    if (min_dmg != 0)
+    {
+        std::cout<<'\n'<<"Your "<<name;
+        weapon::ShowRemain();
+    }
+}
 
+void stick::UseNotBroken() {
+    if (min_dmg != 0)
+        weapon::UseNotBroken();
+}

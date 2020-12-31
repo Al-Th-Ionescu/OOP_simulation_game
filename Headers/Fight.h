@@ -17,6 +17,10 @@ public:
     ~fight() = default;
 
     void Attack(Player &, Status &, weapon &);
+
+    void YourTurn(Player &, Status &, weapon &, opponent &) const;
+
+    void OpponentTurn(Player&, Status&, opponent&) const;
 };
 
 #endif //MAIN_CPP_FIGHT_H

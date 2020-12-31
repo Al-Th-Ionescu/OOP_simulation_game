@@ -5,28 +5,34 @@
 #include "Headers/Fight.h"
 #include "Headers/Choice.h"
 #include "Headers/Stick.h"
-
+#include "Headers/Sword.h"
 
 int main() {
     Player p;
     Status y;
     p.ShowPlayer();
     y.ShowInitStats(p);
-    weapon* d, *z, *q;
-    stick c;
-    d=&c;
-    fight a;
-    a.Attack(p,y, *d);
+    weapon *d;
+    //stick c;
+    // d=&c;
 
-    //choice t(p,y);
-    //   t.Age3(p,y);
-    //  t.Age13(p,y);
     try {
-        if(p.IsDead())
-            throw(std::runtime_error("DEAD"));
+            choice t(p, y);
+            t.Age3(p, y);
+            t.Age13(p, y);
+            sword s;
+            d = &s;
+            fight a;
+            a.Attack(p, y, *d);
     }
-    catch (std::exception&) {
-        std::cout << "You have died!";
+    catch (std::exception &) {
+        std::cout << "\nYou have died!";
     }
+
+
+    // choice t(p,y);
+    //  t.Age3(p,y);
+    //  t.Age13(p,y);
+
     return 0;
 }

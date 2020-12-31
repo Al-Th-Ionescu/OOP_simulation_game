@@ -63,7 +63,7 @@ int Status::ReturnFun() const {
     return fun;
 }
 
-void Status::Died(Player &p) {
+void Status::Died(Player &p) const {
     if (health <= 0 || hygiene <= 0 || fun <= 0)
         p.Death();
 }
@@ -88,7 +88,7 @@ void Status::GetAge(Player &p) {
     years = p.ReturnAge();
 }
 
-unsigned int Status::ReturnYears() {
+unsigned int Status::ReturnYears() const {
     return years;
 }
 

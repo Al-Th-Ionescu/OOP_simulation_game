@@ -1,16 +1,15 @@
-#ifndef MAIN_CPP_STICK_H
-#define MAIN_CPP_STICK_H
+#ifndef MAIN_CPP_SWORD_H
+#define MAIN_CPP_SWORD_H
 
 #include "Weapons.h"
 
-
-class stick : public weapon {
+class sword: public weapon{
     std::string name;
     int min_dmg{};
     int max_dmg{};
 public:
-    stick();
-    ~stick()=default;
+    sword();
+    ~sword()=default;
     void ShowDurability();
     int ReturnDmg();
     std::string ReturnWeap();
@@ -20,4 +19,4 @@ public:
     void UseNotBroken();
 };
 
-#endif //MAIN_CPP_STICK_H
+#endif //MAIN_CPP_SWORD_H
