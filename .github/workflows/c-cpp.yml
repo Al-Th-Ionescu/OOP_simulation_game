@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: dependencies
       run:
-        sudo apt-get install -y valgrind cppcheck g++-9 gcovr
+        sudo apt update && sudo apt install -y valgrind cppcheck g++-9 gcovr
     - name: make
       run: g++ *.cpp CPPs/*.cpp -IHeaders -o main -std=c++11 -Wall -Wextra -pedantic -Weffc++
                 --coverage -fprofile-arcs -ftest-coverage -g -O0 -lm
