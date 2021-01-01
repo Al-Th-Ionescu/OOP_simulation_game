@@ -1,14 +1,12 @@
 #include "../Headers/Player.h"
 
-Player::Player() {
-    std::cout << "Introduce your name: ";
-    std::string Nume;
-    std::cin >> Nume;
-    this->name = Nume;
-}
 
-Player::~Player() {
-    std::cout << '\n' << "~~~~~~~~~~Game Over!~~~~~~~~~~" << '\n';
+
+void Player::SetName() {
+    std::string PlayerName;
+    std::cout<<"Introduce your name: ";
+    std::cin>>PlayerName;
+    this->name=PlayerName;
 }
 
 int Player::Difficulty() const {
@@ -34,7 +32,7 @@ void Player::Death() {
 
 void Player::ShowPlayer() {
     {
-        std::cout << '\n' << "Your character was created successfully!" << '\n' << " Your name is " << name << "."
+        std::cout << '\n' << "Your character was created successfully!" << '\n' << " Your name is " << GetName() << "."
                   << '\n';
         srand(time(nullptr));
         luck = rand();
@@ -55,3 +53,11 @@ void Player::Aging() {
 bool Player::IsDead() const {
     return dead;
 }
+
+std::string Player::GetName() {
+    if (name.empty())
+        SetName();
+    return name;
+}
+
+Player* Player::play= nullptr;

@@ -6,14 +6,25 @@
 #include <time.h>
 
 class Player {
-    std::string name;
+    std::string name="";
     int luck{};
     unsigned int age = 0;
     bool dead = false;
-public:
-    explicit Player();
 
-    ~Player();
+private:
+    Player()=default;
+    static Player* play;
+public:
+    Player( const Player&)=delete;
+    Player& operator=(const Player&)=delete;
+    static Player* get_player(){
+        if (play== nullptr){ play= new Player;}
+        return play;
+    };
+
+    void SetName();
+
+    std::string GetName();
 
     void ShowPlayer();
 
