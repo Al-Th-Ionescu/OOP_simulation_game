@@ -275,7 +275,7 @@
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2020-12-31 19:51:58</td>
+            <td class="headerValue">2021-01-01 17:29:34</td>
             <td></td>
             <td class="headerName">Branches:</td>
             <td class="headerTableEntry">11</td>
@@ -372,8 +372,8 @@
     <tr>
     <td align="right" class="lineno"><pre>11</pre></td>
     <td align="right" class="linebranch"><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 2 not taken">&cross;</span></td>
-    <td align="right" class="linecount coveredLine"><pre>2</pre></td>
-    <td align="left" class="src coveredLine"><pre>    Player p;</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    auto p = Player::get_player();</pre></td>
     </tr>
 
     <tr>
@@ -387,14 +387,14 @@
     <td align="right" class="lineno"><pre>13</pre></td>
     <td align="right" class="linebranch"><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 2 not taken">&cross;</span></td>
     <td align="right" class="linecount coveredLine"><pre>1</pre></td>
-    <td align="left" class="src coveredLine"><pre>    p.ShowPlayer();</pre></td>
+    <td align="left" class="src coveredLine"><pre>    p-&gt;ShowPlayer();</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>14</pre></td>
     <td align="right" class="linebranch"><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 2 not taken">&cross;</span></td>
     <td align="right" class="linecount coveredLine"><pre>1</pre></td>
-    <td align="left" class="src coveredLine"><pre>    y.ShowInitStats(p);</pre></td>
+    <td align="left" class="src coveredLine"><pre>    y.ShowInitStats( * p);</pre></td>
     </tr>
 
     <tr>
@@ -436,21 +436,21 @@
     <td align="right" class="lineno"><pre>20</pre></td>
     <td align="right" class="linebranch"><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 2 not taken">&cross;</span></td>
     <td align="right" class="linecount coveredLine"><pre>1</pre></td>
-    <td align="left" class="src coveredLine"><pre>            choice t(p, y);</pre></td>
+    <td align="left" class="src coveredLine"><pre>            choice t(* p, y);</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>21</pre></td>
     <td align="right" class="linebranch"><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 2 not taken">&cross;</span></td>
     <td align="right" class="linecount coveredLine"><pre>1</pre></td>
-    <td align="left" class="src coveredLine"><pre>            t.Age3(p, y);</pre></td>
+    <td align="left" class="src coveredLine"><pre>            t.Age3(* p, y);</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>22</pre></td>
     <td align="right" class="linebranch"><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 2 not taken">&cross;</span></td>
     <td align="right" class="linecount coveredLine"><pre>1</pre></td>
-    <td align="left" class="src coveredLine"><pre>            t.Age13(p, y);</pre></td>
+    <td align="left" class="src coveredLine"><pre>            t.Age13(* p, y);</pre></td>
     </tr>
 
     <tr>
@@ -478,7 +478,7 @@
     <td align="right" class="lineno"><pre>26</pre></td>
     <td align="right" class="linebranch"><span class="takenBranch" title="Branch 1 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 2 not taken">&cross;</span></td>
     <td align="right" class="linecount coveredLine"><pre>1</pre></td>
-    <td align="left" class="src coveredLine"><pre>            a.Attack(p, y, *d);</pre></td>
+    <td align="left" class="src coveredLine"><pre>            a.Attack(* p, y, *d);</pre></td>
     </tr>
 
     <tr>
